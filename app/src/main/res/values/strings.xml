@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OSU Foot Traffic App</string>
+    <string name="greeting">Hello World!</string>
 </resources>
