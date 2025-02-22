@@ -1,0 +1,15 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory app:title="Preferences">
+        <ListPreference
+            app:defaultValue="Light"
+            app:entries="@array/appearance_values"
+            app:entryValues="@array/appearance_values"
+            app:key="Light"
+            app:title="@string/appearance_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/route_traffic_pref_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

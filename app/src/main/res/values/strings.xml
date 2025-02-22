@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">OSU Foot Traffic App</string>
     <string name="greeting">Hello World!</string>
+
+    <!-- Setting Preferences Strings -->
+    <string name="appearance_title">Appearance</string>
+    <string name="appearance_light">Light</string>
+    <string name="appearance_dark">Light</string>
+
+    <string name="route_traffic_pref_title">Avoid High Traffic Area</string>
+    <string name="map_button_name">Map</string>
+    <string name="settings_button_name">Settings</string>
 </resources>

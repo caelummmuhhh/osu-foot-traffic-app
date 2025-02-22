@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,23 +6,28 @@
     android:gravity="center"
     android:orientation="vertical">
 
-        <!--
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="314dp"
-                android:layout_height="351dp" />-->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="24dp"
-            android:text="@string/greeting" />
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_fragment_container"
-            android:name="com.example.osufoottrafficapp.fragment.MapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/fragment_map" />
-</LinearLayout>
+            android:layout_height="642dp"
+            android:layout_above="@+id/map_button"
+            android:layout_marginBottom="30dp" />
+
+        <Button
+            android:id="@+id/map_button"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:text="@string/map_button_name" />
+
+        <Button
+            android:id="@+id/settings_button"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:text="@string/settings_button_name" />
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<resources>
+    <!-- Appearance Preferences -->
+    <string-array name="appearance_values">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>High-Contrast</item>
+    </string-array>
+</resources>

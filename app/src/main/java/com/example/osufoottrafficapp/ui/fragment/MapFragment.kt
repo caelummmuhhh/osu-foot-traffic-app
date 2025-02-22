@@ -1,4 +1,4 @@
-package com.example.osufoottrafficapp.fragment
+package com.example.osufoottrafficapp.ui.fragment
 
 import androidx.fragment.app.Fragment
 
@@ -39,13 +39,13 @@ class MapFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d(TAG, "onCreateView() called!")
+        Log.d(TAG, "MapFragment onCreateView() called!")
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.d(TAG, "onDestroyView() called!")
+        Log.d(TAG, "MapFragment onDestroyView() called!")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
