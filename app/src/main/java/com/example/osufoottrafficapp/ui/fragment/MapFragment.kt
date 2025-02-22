@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MapFragment : Fragment() {
 
-    private val TAG = this::class.simpleName
+    private val TAG = "MapFragment"
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.

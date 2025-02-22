@@ -9,7 +9,7 @@ import androidx.preference.PreferenceFragmentCompat
 import com.example.osufoottrafficapp.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
-    private var tag: String? = this::class.simpleName
+    private var tag = "SettingsFragment"
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
     }
@@ -19,12 +19,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d(tag, "Creating SettingsFragment via SettingsFragment()")
+        Log.d(tag, "onCreateView SettingsFragment via SettingsFragment()")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onDestroyView() {
-        Log.d(tag, "Destroying SettingsFragment via onDestroyView()")
+        Log.d(tag, "onDestroyView SettingsFragment via onDestroyView()")
         super.onDestroyView()
     }
 }
