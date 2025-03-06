@@ -7,8 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.osufoottrafficapp.R
 
@@ -26,23 +29,34 @@ import kotlinx.coroutines.withContext
 class MapFragment : Fragment() {
 
     private val TAG = "MapFragment"
-    private var googleMap: GoogleMap? = null  // Use a nullable variable
-    private lateinit var markerDatabase: MarkerDatabase
-    private lateinit var markerDao: MarkerDao
+    private lateinit var markerViewModel: MarkerViewModel
+    private lateinit var googleMap: GoogleMap
+    private lateinit var updateButton: Button
+    private lateinit var deleteButton: Button
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
-
-        //Load Markers in database
-        loadMarkers()
-
-        // Set a click listener to add markers dynamically
-        googleMap?.setOnMapClickListener { latLng ->
+        //Observe LiveData for marker updates
+        markerViewModel.allMarkers.observe(viewLifecycleOwner, Observer { markerList ->
+            //Clear the map and add the markers from the LiveData list
+            googleMap.clear()
+            markerList.forEach { markerEntity ->
+                val latLng = LatLng(markerEntity.latitude, markerEntity.longitude)
+                val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title)
+                googleMap.addMarker(markerOptions)
+            }
+        })
+        // Set OnMapClickListener to add markers
+        googleMap.setOnMapClickListener { latLng ->
+            //Call a function to add a new marker at the clicked location
             addMarker(latLng)
         }
-        // Add click listener for markers
-        googleMap?.setOnMarkerClickListener { marker ->
-            showEditDeleteDialog(marker)
+
+        //Add OnMarkerClickListener
+        googleMap.setOnMarkerClickListener { marker ->
+            //Handle when a specific marker is clicked
+            showMarkerOptionsDialog(marker)
+            //Return true if successfull handle
             true
         }
     }
@@ -53,105 +67,81 @@ class MapFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, "MapFragment onCreateView() called!")
+        //Get view model
+        markerViewModel = ViewModelProvider(this).get(MarkerViewModel::class.java)
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Get Fragment
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
-        //Init DB and DAO
-        markerDatabase = MarkerDatabase.getDatabase(requireContext())
-        markerDao = markerDatabase.markerDao()
     }
 
-    //Adds marker when clicked AND save to db
+    //Add a marker to the map and save it to the database
     private fun addMarker(latLng: LatLng) {
-        //Add marker
-        val marker = googleMap?.addMarker(
-                MarkerOptions().position(latLng).title("Marker at ${latLng.latitude}, ${latLng.longitude}")
-            )
-        Log.d(TAG, "Marker at ${latLng.latitude}, ${latLng.longitude} created!")
-        //Save marker
+        //Create a new marker with a default title
+        val markerOptions = MarkerOptions().position(latLng).title("New Marker")
+
+        //Add the marker to the map
+        val marker = googleMap.addMarker(markerOptions)
+
+        //Save the marker in the database
         marker?.let {
-            saveMarkerToDatabase(latLng)
-        }
-        Log.d(TAG, "Marker at ${latLng.latitude}, ${latLng.longitude} saved!")
-    }
-    private fun saveMarkerToDatabase(latLng: LatLng) {
-        val markerEntity = MarkerEntity(latitude = latLng.latitude, longitude = latLng.longitude, title = "Custom Marker")
-
-        // Use a coroutine to insert data asynchronously
-        lifecycleScope.launch(Dispatchers.IO) {
-            markerDao.insertMarker(markerEntity)
+            val markerEntity = MarkerEntity(
+                title = it.title ?: "Unnamed Marker",
+                latitude = it.position.latitude,
+                longitude = it.position.longitude
+            )
+            //Insert the marker into the database
+            markerViewModel.insertMarker(markerEntity)
         }
     }
-    private fun loadMarkers() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            val markers = markerDao.getAllMarkers()
-
-            withContext(Dispatchers.Main) {
-                for (marker in markers) {
-                    googleMap?.addMarker(
-                        MarkerOptions().position(LatLng(marker.latitude, marker.longitude)).title(marker.title)
-                    )
-                }
-            }
-        }
-    }
-    private fun showEditDeleteDialog(marker: Marker) {
+    //Display a dialog when a marker is clicked
+    private fun showMarkerOptionsDialog(marker: Marker) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Edit or Delete Marker")
+        builder.setTitle("Update Marker Name")
 
+        //EditText allows the user to input a new title
         val input = EditText(requireContext())
-        input.hint = "Enter new marker title"
         input.setText(marker.title)
         builder.setView(input)
 
+        //Update button saves the input to title if present
         builder.setPositiveButton("Update") { _, _ ->
             val newTitle = input.text.toString()
-            updateMarkerInDatabase(marker, newTitle)
+            if (newTitle.isNotBlank()) {
+                updateMarker(marker, newTitle)
+            }
         }
 
-        builder.setNegativeButton("Delete") { _, _ ->
-            deleteMarkerFromDatabase(marker)
+        //Delete will remove all Markers
+        builder.setNegativeButton("Delete All Markers") { _, _ ->
+            deleteMarker()
         }
 
+        //Cancel closes the dialogue
         builder.setNeutralButton("Cancel", null)
-
         builder.show()
     }
-    private fun updateMarkerInDatabase(marker: Marker, newTitle: String) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            // Perform the database query to get the corresponding MarkerEntity
-            val markerEntity = markerDao.getAllMarkers().find {
-                it.latitude == marker.position.latitude && it.longitude == marker.position.longitude
-            }
-
-            markerEntity?.let {
-                // Update the MarkerEntity in the database
-                val updatedMarker = it.copy(title = newTitle)
-                markerDao.updateMarker(updatedMarker)
-
-                // Ensure we update the marker UI on the main thread
-                withContext(Dispatchers.Main) {
-                    marker.title = newTitle // Update the marker's title on the map
-                    marker.showInfoWindow() // Optional: Refresh info window with new title
-                }
-            }
-        }
+    //Called if update button is pressed
+    private fun updateMarker(marker: Marker, newTitle: String) {
+        //Set title to new title (only thing that can update for now)
+        marker.title = newTitle
+        //Use the ViewModel to update the marker
+        val markerEntity = MarkerEntity(
+            title = newTitle,
+            latitude = marker.position.latitude,
+            longitude = marker.position.longitude
+        )
+        //Update the marker using ViewModel
+        markerViewModel.updateMarker(markerEntity)
     }
 
-    private fun deleteMarkerFromDatabase(marker: Marker) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            // Delete all markers from the database
-            markerDao.deleteAllMarkers()
-
-            // Perform the UI operation on the main thread to remove all markers from the map
-            requireActivity().runOnUiThread {
-                googleMap?.clear() // Removes all markers from the map
-            }
-        }
+    private fun deleteMarker() {
+        //Deletes all markers from the database
+        markerViewModel.deleteAllMarkers()
     }
+
 }

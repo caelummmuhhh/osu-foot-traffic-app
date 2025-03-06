@@ -1,26 +1,21 @@
 package com.example.osufoottrafficapp.ui.fragment
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
-
 @Dao
 interface MarkerDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMarker(marker: MarkerEntity)
 
     @Query("SELECT * FROM markers")
-    suspend fun getAllMarkers(): List<MarkerEntity>
+    fun getAllMarkers(): LiveData<List<MarkerEntity>> // LiveData to observe markers
 
     @Delete
     suspend fun deleteMarker(marker: MarkerEntity)
 
     @Query("DELETE FROM markers")
-    fun deleteAllMarkers()
-
-    //This function is still broken - work on passing paramaters to delete single marker
-    @Query("DELETE FROM markers WHERE id = :markerId")
-    suspend fun deleteMarkerById(markerId: Int)
+    suspend fun deleteAllMarkers()
 
     @Update
-    fun updateMarker(marker: MarkerEntity)
+    suspend fun updateMarker(marker: MarkerEntity)
 }
