@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import com.example.osufoottrafficapp.R
 
@@ -15,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,6 +39,11 @@ class MapFragment : Fragment() {
         // Set a click listener to add markers dynamically
         googleMap?.setOnMapClickListener { latLng ->
             addMarker(latLng)
+        }
+        // Add click listener for markers
+        googleMap?.setOnMarkerClickListener { marker ->
+            showEditDeleteDialog(marker)
+            true
         }
     }
 
@@ -89,6 +97,60 @@ class MapFragment : Fragment() {
                         MarkerOptions().position(LatLng(marker.latitude, marker.longitude)).title(marker.title)
                     )
                 }
+            }
+        }
+    }
+    private fun showEditDeleteDialog(marker: Marker) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Edit or Delete Marker")
+
+        val input = EditText(requireContext())
+        input.hint = "Enter new marker title"
+        input.setText(marker.title)
+        builder.setView(input)
+
+        builder.setPositiveButton("Update") { _, _ ->
+            val newTitle = input.text.toString()
+            updateMarkerInDatabase(marker, newTitle)
+        }
+
+        builder.setNegativeButton("Delete") { _, _ ->
+            deleteMarkerFromDatabase(marker)
+        }
+
+        builder.setNeutralButton("Cancel", null)
+
+        builder.show()
+    }
+    private fun updateMarkerInDatabase(marker: Marker, newTitle: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            // Perform the database query to get the corresponding MarkerEntity
+            val markerEntity = markerDao.getAllMarkers().find {
+                it.latitude == marker.position.latitude && it.longitude == marker.position.longitude
+            }
+
+            markerEntity?.let {
+                // Update the MarkerEntity in the database
+                val updatedMarker = it.copy(title = newTitle)
+                markerDao.updateMarker(updatedMarker)
+
+                // Ensure we update the marker UI on the main thread
+                withContext(Dispatchers.Main) {
+                    marker.title = newTitle // Update the marker's title on the map
+                    marker.showInfoWindow() // Optional: Refresh info window with new title
+                }
+            }
+        }
+    }
+
+    private fun deleteMarkerFromDatabase(marker: Marker) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            // Delete all markers from the database
+            markerDao.deleteAllMarkers()
+
+            // Perform the UI operation on the main thread to remove all markers from the map
+            requireActivity().runOnUiThread {
+                googleMap?.clear() // Removes all markers from the map
             }
         }
     }

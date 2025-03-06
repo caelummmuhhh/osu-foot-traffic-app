@@ -15,5 +15,12 @@ interface MarkerDao {
     suspend fun deleteMarker(marker: MarkerEntity)
 
     @Query("DELETE FROM markers")
-    suspend fun deleteAllMarkers()
+    fun deleteAllMarkers()
+
+    //This function is still broken - work on passing paramaters to delete single marker
+    @Query("DELETE FROM markers WHERE id = :markerId")
+    suspend fun deleteMarkerById(markerId: Int)
+
+    @Update
+    fun updateMarker(marker: MarkerEntity)
 }

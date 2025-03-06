@@ -8,5 +8,5 @@ data class MarkerEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val latitude: Double,
     val longitude: Double,
-    val title: String
+    var title: String
 )
