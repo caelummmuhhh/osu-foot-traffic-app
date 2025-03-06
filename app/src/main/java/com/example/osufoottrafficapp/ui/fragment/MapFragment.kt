@@ -19,19 +19,19 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapFragment : Fragment() {
 
     private val TAG = "MapFragment"
-    private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
+    private var googleMap: GoogleMap? = null  // Use a nullable variable
+
+    private val callback = OnMapReadyCallback { map ->
+        googleMap = map
+
+        // Move the camera to a default location (Sydney for now)
         val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10f))
+
+        // Set a click listener to add markers dynamically
+        googleMap?.setOnMapClickListener { latLng ->
+            addMarker(latLng)
+        }
     }
 
     override fun onCreateView(
@@ -43,14 +43,17 @@ class MapFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d(TAG, "MapFragment onDestroyView() called!")
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+
+    private fun addMarker(latLng: LatLng) {
+        googleMap?.let { map ->
+            map.addMarker(
+                MarkerOptions().position(latLng).title("Marker at ${latLng.latitude}, ${latLng.longitude}")
+            )
+        } ?: Log.e(TAG, "GoogleMap is not initialized yet!")
     }
 }
