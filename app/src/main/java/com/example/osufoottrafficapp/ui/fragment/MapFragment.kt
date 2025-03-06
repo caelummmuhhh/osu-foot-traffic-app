@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.osufoottrafficapp.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -15,18 +16,22 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MapFragment : Fragment() {
 
     private val TAG = "MapFragment"
     private var googleMap: GoogleMap? = null  // Use a nullable variable
+    private lateinit var markerDatabase: MarkerDatabase
+    private lateinit var markerDao: MarkerDao
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
 
-        // Move the camera to a default location (Sydney for now)
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10f))
+        //Load Markers in database
+        loadMarkers()
 
         // Set a click listener to add markers dynamically
         googleMap?.setOnMapClickListener { latLng ->
@@ -47,13 +52,44 @@ class MapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+
+        //Init DB and DAO
+        markerDatabase = MarkerDatabase.getDatabase(requireContext())
+        markerDao = markerDatabase.markerDao()
     }
 
+    //Adds marker when clicked AND save to db
     private fun addMarker(latLng: LatLng) {
-        googleMap?.let { map ->
-            map.addMarker(
+        //Add marker
+        val marker = googleMap?.addMarker(
                 MarkerOptions().position(latLng).title("Marker at ${latLng.latitude}, ${latLng.longitude}")
             )
-        } ?: Log.e(TAG, "GoogleMap is not initialized yet!")
+        Log.d(TAG, "Marker at ${latLng.latitude}, ${latLng.longitude} created!")
+        //Save marker
+        marker?.let {
+            saveMarkerToDatabase(latLng)
+        }
+        Log.d(TAG, "Marker at ${latLng.latitude}, ${latLng.longitude} saved!")
+    }
+    private fun saveMarkerToDatabase(latLng: LatLng) {
+        val markerEntity = MarkerEntity(latitude = latLng.latitude, longitude = latLng.longitude, title = "Custom Marker")
+
+        // Use a coroutine to insert data asynchronously
+        lifecycleScope.launch(Dispatchers.IO) {
+            markerDao.insertMarker(markerEntity)
+        }
+    }
+    private fun loadMarkers() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val markers = markerDao.getAllMarkers()
+
+            withContext(Dispatchers.Main) {
+                for (marker in markers) {
+                    googleMap?.addMarker(
+                        MarkerOptions().position(LatLng(marker.latitude, marker.longitude)).title(marker.title)
+                    )
+                }
+            }
+        }
     }
 }
