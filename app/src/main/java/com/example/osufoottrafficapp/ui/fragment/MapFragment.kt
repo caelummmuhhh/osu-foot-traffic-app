@@ -12,7 +12,6 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.osufoottrafficapp.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,9 +21,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.google.maps.android.data.geojson.GeoJsonLayer
+import com.google.firebase.Firebase
+import com.google.firebase.storage.storage
+import org.json.JSONObject
 
 class MapFragment : Fragment() {
 
@@ -33,6 +33,8 @@ class MapFragment : Fragment() {
     private lateinit var googleMap: GoogleMap
     private lateinit var updateButton: Button
     private lateinit var deleteButton: Button
+    private val storageRef = Firebase.storage.reference
+    private var buildingsLayer: GeoJsonLayer? = null
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
@@ -46,6 +48,7 @@ class MapFragment : Fragment() {
                 googleMap.addMarker(markerOptions)
             }
         })
+
         // Set OnMapClickListener to add markers
         googleMap.setOnMapClickListener { latLng ->
             //Call a function to add a new marker at the clicked location
@@ -59,6 +62,9 @@ class MapFragment : Fragment() {
             //Return true if successfull handle
             true
         }
+
+        createBuildingsLayer()
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng( 39.999396, -83.012504), 15f))
     }
 
     override fun onCreateView(
@@ -77,6 +83,22 @@ class MapFragment : Fragment() {
         //Get Fragment
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+
+    private fun createBuildingsLayer() {
+        // Get the .geojson file from db and parse it into JsonOBJECT
+        val downloadByteLimit: Long = 2 * 1024 * 1024
+        val geojsonRef = storageRef.child("geojson/osu_buildings.json")
+        geojsonRef.getBytes(downloadByteLimit).addOnSuccessListener { byteArray ->
+            val strJson = String(byteArray)
+            val jsonData = JSONObject(strJson)
+
+            buildingsLayer = GeoJsonLayer(googleMap, jsonData)
+            buildingsLayer?.addLayerToMap()
+        }.addOnFailureListener { err ->
+            Log.e(TAG, "Error retrieving/parsing osu_buildings.geojson from database.")
+            err.printStackTrace()
+        }
     }
 
     //Add a marker to the map and save it to the database
