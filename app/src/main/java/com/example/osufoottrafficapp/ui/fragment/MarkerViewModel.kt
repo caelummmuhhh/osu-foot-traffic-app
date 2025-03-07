@@ -4,33 +4,35 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.google.android.gms.maps.model.Marker
 import kotlinx.coroutines.launch
 
 class MarkerViewModel(application: Application) : AndroidViewModel(application) {
-    private val markerDao: MarkerDao = MarkerDatabase.getDatabase(application).markerDao()
-    private val markerRepository = MarkerRepository(markerDao)
+    private val repository: MarkerRepository
+    val allMarkers: LiveData<List<MarkerEntity>>
 
-    // Exposing LiveData to observe markers
-    val allMarkers: LiveData<List<MarkerEntity>> = markerRepository.getAllMarkers()
-
-    // Method to update the marker
-    fun updateMarker(marker: MarkerEntity) {
-        viewModelScope.launch {
-            markerRepository.updateMarker(marker)
-        }
+    init {
+        val markerDao = MarkerDatabase.getDatabase(application).markerDao()
+        repository = MarkerRepository(markerDao)
+        allMarkers = repository.allMarkers
     }
 
-    fun insertMarker(marker: MarkerEntity) {
-        viewModelScope.launch{
-            markerRepository.insertMarker(marker)
-        }
+    // Method to update the marker
+    fun updateMarker(marker: MarkerEntity) = viewModelScope.launch {
+        repository.updateMarker(marker)
+    }
+
+    fun insertMarker(marker: MarkerEntity) = viewModelScope.launch {
+            repository.insertMarker(marker)
+    }
+
+    fun deleteMarker(marker: MarkerEntity) = viewModelScope.launch {
+        repository.deleteMarker(marker)
     }
 
     // Method to delete all markers
-    fun deleteAllMarkers() {
-        viewModelScope.launch {
-            markerRepository.deleteAllMarkers()
-        }
+    fun deleteAllMarkers() = viewModelScope.launch{
+            repository.deleteAllMarkers()
     }
 }
 
