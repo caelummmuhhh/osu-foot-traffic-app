@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "435430912923",
+    "project_id": "osu-foot-traffic-app",
+    "storage_bucket": "osu-foot-traffic-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435430912923:android:253995b11413af4349a73e",
+        "android_client_info": {
+          "package_name": "com.example.osufoottrafficapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcmyaY-TvD71cXeIQwWztzEifQCLCDKUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

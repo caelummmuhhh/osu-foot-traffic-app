@@ -12,7 +12,6 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.osufoottrafficapp.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,9 +21,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.google.maps.android.data.geojson.GeoJsonLayer
+import com.google.firebase.Firebase
+import com.google.firebase.storage.storage
+import com.google.maps.android.collections.MarkerManager
+import org.json.JSONObject
 
 class MapFragment : Fragment() {
 
@@ -33,19 +34,29 @@ class MapFragment : Fragment() {
     private lateinit var googleMap: GoogleMap
     private lateinit var updateButton: Button
     private lateinit var deleteButton: Button
+    private lateinit var markerManager: MarkerManager
+    private lateinit var markerCollection: MarkerManager.Collection
+    private val storageRef = Firebase.storage.reference
+    private var buildingsLayer: GeoJsonLayer? = null
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
+
+        // Manage all markers independently from polygons, lines, layers, etc.
+        markerManager = MarkerManager(googleMap)
+        markerCollection = markerManager.newCollection()
+
         //Observe LiveData for marker updates
         markerViewModel.allMarkers.observe(viewLifecycleOwner, Observer { markerList ->
             //Clear the map and add the markers from the LiveData list
-            googleMap.clear()
+            markerCollection.clear()
             markerList.forEach { markerEntity ->
                 val latLng = LatLng(markerEntity.latitude, markerEntity.longitude)
                 val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title)
-                googleMap.addMarker(markerOptions)
+                markerCollection.addMarker(markerOptions)
             }
         })
+
         // Set OnMapClickListener to add markers
         googleMap.setOnMapClickListener { latLng ->
             //Call a function to add a new marker at the clicked location
@@ -53,12 +64,15 @@ class MapFragment : Fragment() {
         }
 
         //Add OnMarkerClickListener
-        googleMap.setOnMarkerClickListener { marker ->
+        markerCollection.setOnMarkerClickListener { marker ->
             //Handle when a specific marker is clicked
             showMarkerOptionsDialog(marker)
-            //Return true if successfull handle
+            //Return true if successful handle
             true
         }
+
+        createBuildingsLayer()
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng( 39.999396, -83.012504), 15f))
     }
 
     override fun onCreateView(
@@ -79,13 +93,35 @@ class MapFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 
+    private fun createBuildingsLayer() {
+        // Get the .geojson file from db and parse it into JsonOBJECT
+        val downloadByteLimit: Long = 2 * 1024 * 1024
+        val geojsonRef = storageRef.child("geojson/osu_buildings.json")
+        geojsonRef.getBytes(downloadByteLimit).addOnSuccessListener { byteArray ->
+            val strJson = String(byteArray)
+            val jsonData = JSONObject(strJson)
+
+            buildingsLayer = GeoJsonLayer(googleMap, jsonData, markerManager, null, null, null)
+            buildingsLayer?.setOnFeatureClickListener { feature ->
+                Log.d(
+                    TAG,
+                    "Building clicked: ${feature.getProperty("BLDG_NAME") ?: "Unknown Building"}"
+                )
+            }
+            buildingsLayer?.addLayerToMap()
+        }.addOnFailureListener { err ->
+            Log.e(TAG, "Error retrieving/parsing osu_buildings.geojson from database.")
+            err.printStackTrace()
+        }
+    }
+
     //Add a marker to the map and save it to the database
     private fun addMarker(latLng: LatLng) {
         //Create a new marker with a default title
         val markerOptions = MarkerOptions().position(latLng).title("New Marker")
 
         //Add the marker to the map
-        val marker = googleMap.addMarker(markerOptions)
+        val marker = markerCollection.addMarker(markerOptions)
 
         //Save the marker in the database
         marker?.let {
@@ -127,7 +163,7 @@ class MapFragment : Fragment() {
     }
     //Called if update button is pressed
     private fun updateMarker(marker: Marker, newTitle: String) {
-       val updatedMarker = googleMap.addMarker( MarkerOptions().position(marker.position).title(newTitle))
+       val updatedMarker = markerCollection.addMarker( MarkerOptions().position(marker.position).title(newTitle))
         //Save the marker in the database
         updatedMarker?.let {
             val markerEntity = MarkerEntity(
@@ -137,13 +173,14 @@ class MapFragment : Fragment() {
             )
             //Insert the marker into the database
             markerViewModel.insertMarker(markerEntity)
-            marker.remove()
+            markerCollection.remove(marker)
         }
     }
 
     private fun deleteMarker() {
         //Deletes all markers from the database
         markerViewModel.deleteAllMarkers()
+        markerCollection.clear()
     }
 
 }
