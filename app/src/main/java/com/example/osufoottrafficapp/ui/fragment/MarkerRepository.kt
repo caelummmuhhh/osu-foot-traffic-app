@@ -1,13 +1,10 @@
 package com.example.osufoottrafficapp.ui.fragment
 
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 
 class MarkerRepository(private val markerDao: MarkerDao) {
-
-    // Get all markers wrapped in LiveData
-    fun getAllMarkers(): LiveData<List<MarkerEntity>> {
-        return markerDao.getAllMarkers()
-    }
+    val allMarkers: LiveData<List<MarkerEntity>> = markerDao.getAllMarkers()
 
     suspend fun insertMarker(marker: MarkerEntity) {
         markerDao.insertMarker(marker)
@@ -15,6 +12,10 @@ class MarkerRepository(private val markerDao: MarkerDao) {
 
     suspend fun updateMarker(marker: MarkerEntity) {
         markerDao.updateMarker(marker)
+    }
+
+    suspend fun deleteMarker(marker: MarkerEntity) {
+        markerDao.deleteMarker(marker)
     }
 
     suspend fun deleteAllMarkers() {

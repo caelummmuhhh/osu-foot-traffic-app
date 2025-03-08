@@ -149,16 +149,18 @@ class MapFragment : Fragment() {
     }
     //Called if update button is pressed
     private fun updateMarker(marker: Marker, newTitle: String) {
-        //Set title to new title (only thing that can update for now)
-        marker.title = newTitle
-        //Use the ViewModel to update the marker
-        val markerEntity = MarkerEntity(
-            title = newTitle,
-            latitude = marker.position.latitude,
-            longitude = marker.position.longitude
-        )
-        //Update the marker using ViewModel
-        markerViewModel.updateMarker(markerEntity)
+       val updatedMarker = googleMap.addMarker( MarkerOptions().position(marker.position).title(newTitle))
+        //Save the marker in the database
+        updatedMarker?.let {
+            val markerEntity = MarkerEntity(
+                title = it.title ?: newTitle,
+                latitude = it.position.latitude,
+                longitude = it.position.longitude
+            )
+            //Insert the marker into the database
+            markerViewModel.insertMarker(markerEntity)
+            marker.remove()
+        }
     }
 
     private fun deleteMarker() {
