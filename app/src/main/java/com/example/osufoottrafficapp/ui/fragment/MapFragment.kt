@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.google.firebase.Firebase
 import com.google.firebase.storage.storage
+import com.google.maps.android.collections.MarkerManager
 import org.json.JSONObject
 
 class MapFragment : Fragment() {
@@ -33,19 +34,26 @@ class MapFragment : Fragment() {
     private lateinit var googleMap: GoogleMap
     private lateinit var updateButton: Button
     private lateinit var deleteButton: Button
+    private lateinit var markerManager: MarkerManager
+    private lateinit var markerCollection: MarkerManager.Collection
     private val storageRef = Firebase.storage.reference
     private var buildingsLayer: GeoJsonLayer? = null
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
+
+        // Manage all markers independently from polygons, lines, layers, etc.
+        markerManager = MarkerManager(googleMap)
+        markerCollection = markerManager.newCollection()
+
         //Observe LiveData for marker updates
         markerViewModel.allMarkers.observe(viewLifecycleOwner, Observer { markerList ->
             //Clear the map and add the markers from the LiveData list
-            googleMap.clear()
+            markerCollection.clear()
             markerList.forEach { markerEntity ->
                 val latLng = LatLng(markerEntity.latitude, markerEntity.longitude)
                 val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title)
-                googleMap.addMarker(markerOptions)
+                markerCollection.addMarker(markerOptions)
             }
         })
 
@@ -56,10 +64,10 @@ class MapFragment : Fragment() {
         }
 
         //Add OnMarkerClickListener
-        googleMap.setOnMarkerClickListener { marker ->
+        markerCollection.setOnMarkerClickListener { marker ->
             //Handle when a specific marker is clicked
             showMarkerOptionsDialog(marker)
-            //Return true if successfull handle
+            //Return true if successful handle
             true
         }
 
@@ -93,7 +101,13 @@ class MapFragment : Fragment() {
             val strJson = String(byteArray)
             val jsonData = JSONObject(strJson)
 
-            buildingsLayer = GeoJsonLayer(googleMap, jsonData)
+            buildingsLayer = GeoJsonLayer(googleMap, jsonData, markerManager, null, null, null)
+            buildingsLayer?.setOnFeatureClickListener { feature ->
+                Log.d(
+                    TAG,
+                    "Building clicked: ${feature.getProperty("BLDG_NAME") ?: "Unknown Building"}"
+                )
+            }
             buildingsLayer?.addLayerToMap()
         }.addOnFailureListener { err ->
             Log.e(TAG, "Error retrieving/parsing osu_buildings.geojson from database.")
@@ -107,7 +121,7 @@ class MapFragment : Fragment() {
         val markerOptions = MarkerOptions().position(latLng).title("New Marker")
 
         //Add the marker to the map
-        val marker = googleMap.addMarker(markerOptions)
+        val marker = markerCollection.addMarker(markerOptions)
 
         //Save the marker in the database
         marker?.let {
@@ -149,7 +163,7 @@ class MapFragment : Fragment() {
     }
     //Called if update button is pressed
     private fun updateMarker(marker: Marker, newTitle: String) {
-       val updatedMarker = googleMap.addMarker( MarkerOptions().position(marker.position).title(newTitle))
+       val updatedMarker = markerCollection.addMarker( MarkerOptions().position(marker.position).title(newTitle))
         //Save the marker in the database
         updatedMarker?.let {
             val markerEntity = MarkerEntity(
@@ -159,13 +173,14 @@ class MapFragment : Fragment() {
             )
             //Insert the marker into the database
             markerViewModel.insertMarker(markerEntity)
-            marker.remove()
+            markerCollection.remove(marker)
         }
     }
 
     private fun deleteMarker() {
         //Deletes all markers from the database
         markerViewModel.deleteAllMarkers()
+        markerCollection.clear()
     }
 
 }
