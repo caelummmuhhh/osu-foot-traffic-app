@@ -1,7 +1,8 @@
 package com.example.osufoottrafficapp.ui.fragment
 
+import android.content.pm.PackageManager
+import android.location.Location
 import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,10 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.osufoottrafficapp.R
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,6 +32,8 @@ import com.google.firebase.Firebase
 import com.google.firebase.storage.storage
 import com.google.maps.android.collections.MarkerManager
 import org.json.JSONObject
+import android.Manifest as Manifest1
+//import com.example.osufoottrafficapp.Manifest as Manifest2
 
 class MapFragment : Fragment() {
 
@@ -38,6 +46,8 @@ class MapFragment : Fragment() {
     private lateinit var markerCollection: MarkerManager.Collection
     private val storageRef = Firebase.storage.reference
     private var buildingsLayer: GeoJsonLayer? = null
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1001
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
@@ -90,6 +100,7 @@ class MapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //Get Fragment
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        checkLocationPermission()
         mapFragment?.getMapAsync(callback)
     }
 
@@ -183,4 +194,39 @@ class MapFragment : Fragment() {
         markerCollection.clear()
     }
 
+    //Check for location permissions
+    private fun checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest1.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest1.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+        } else {
+            getCurrentLocation()
+        }
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                getCurrentLocation()
+            } else {
+                Toast.makeText(requireContext(), "Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    private fun getCurrentLocation() {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest1.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? -> location?.let {
+                val latitude = it.latitude
+                val longitude = it.longitude
+                Toast.makeText(
+                    requireContext(),
+                    "Lat: $latitude, Lng: $longitude",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } ?: run {
+                Toast.makeText(requireContext(), "Location unavailable", Toast.LENGTH_SHORT).show()
+            } }
+        }
+    }
 }
