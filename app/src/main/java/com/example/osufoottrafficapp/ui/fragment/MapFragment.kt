@@ -33,6 +33,7 @@ import com.google.firebase.storage.storage
 import com.google.maps.android.collections.MarkerManager
 import org.json.JSONObject
 import android.Manifest as Manifest1
+//Idk what this import does but it causes an error.
 //import com.example.osufoottrafficapp.Manifest as Manifest2
 
 class MapFragment : Fragment() {
