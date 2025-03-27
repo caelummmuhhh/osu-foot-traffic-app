@@ -26,37 +26,43 @@ class MainActivity : AppCompatActivity()/*, OnMapReadyCallback*/ {
         binding.settingsButton.setOnClickListener(::settingsButtonOnClickListener)
 
         if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.main_fragment_container, MapFragment())
+            val mapFragment = MapFragment()
+            val settingsFragment = SettingsFragment()
+
+            supportFragmentManager.beginTransaction()
+                .add(R.id.main_fragment_container, mapFragment, "MAP_FRAGMENT")
+                .add(R.id.main_fragment_container, settingsFragment, "SETTINGS_FRAGMENT")
+                .hide(settingsFragment) // Start with settings hidden
                 .commit()
         }
     }
 
     private fun mapButtonOnClickListener(view: View) {
-        val currentFragment = supportFragmentManager
-            .findFragmentById(R.id.main_fragment_container)
-        if (currentFragment is MapFragment) {
-            return
-        }
-        replaceFragment(MapFragment(), R.id.main_fragment_container)
+        val mapFragment = supportFragmentManager.findFragmentByTag("MAP_FRAGMENT") ?: MapFragment()
+        showFragment(mapFragment)
     }
 
     private fun settingsButtonOnClickListener(view: View) {
-        val currentFragment = supportFragmentManager
-            .findFragmentById(R.id.main_fragment_container)
-        if (currentFragment is SettingsFragment) {
-            return
-        }
-        replaceFragment(SettingsFragment(), R.id.main_fragment_container)
+        val settingsFragment = supportFragmentManager.findFragmentByTag("SETTINGS_FRAGMENT") ?: SettingsFragment()
+        showFragment(settingsFragment)
     }
 
-    private fun replaceFragment(fragment: Fragment, id: Int) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(id, fragment)
-            .commit()
+
+    private fun showFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+
+        // Hide all fragments first
+        supportFragmentManager.fragments.forEach { transaction.hide(it) }
+
+        if (fragment.isAdded) {
+            transaction.show(fragment) // If it's already added, just show it
+        } else {
+            transaction.add(R.id.main_fragment_container, fragment) // Add if not already added
+        }
+
+        transaction.commit()
     }
+
 
     override fun onStart() {
         super.onStart()

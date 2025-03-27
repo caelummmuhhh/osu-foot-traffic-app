@@ -24,6 +24,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -49,6 +50,7 @@ class MapFragment : Fragment() {
     private var buildingsLayer: GeoJsonLayer? = null
     private val LOCATION_PERMISSION_REQUEST_CODE = 1001
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var userMarker: Marker? = null
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
@@ -84,6 +86,7 @@ class MapFragment : Fragment() {
 
         createBuildingsLayer()
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng( 39.999396, -83.012504), 15f))
+        getCurrentLocation()
     }
 
     override fun onCreateView(
@@ -99,12 +102,29 @@ class MapFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Get Fragment
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        mapFragment?.getMapAsync { map ->
+            googleMap = map
+            setupMap() // Move initialization logic to a separate function
+        }
+
         checkLocationPermission()
-        mapFragment?.getMapAsync(callback)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapFragment?.getMapAsync(callback) // Ensure the map reloads when coming back
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (::googleMap.isInitialized) {
+            googleMap.clear()
+        }
+    }
     private fun createBuildingsLayer() {
         // Get the .geojson file from db and parse it into JsonOBJECT
         val downloadByteLimit: Long = 2 * 1024 * 1024
@@ -218,16 +238,44 @@ class MapFragment : Fragment() {
 
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest1.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? -> location?.let {
-                val latitude = it.latitude
-                val longitude = it.longitude
-                Toast.makeText(
-                    requireContext(),
-                    "Lat: $latitude, Lng: $longitude",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val userLatLng = LatLng(it.latitude, it.longitude)
+               //Remove existing marker if present
+                userMarker?.remove()
+
+                //Set new marker
+                userMarker = googleMap.addMarker(MarkerOptions().position(userLatLng).title("Your Location").icon(
+                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+                //Move camera to marker
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
             } ?: run {
                 Toast.makeText(requireContext(), "Location unavailable", Toast.LENGTH_SHORT).show()
             } }
         }
+    }
+
+    private fun setupMap() {
+        if (!::googleMap.isInitialized) return // Prevent crashes
+
+        markerManager = MarkerManager(googleMap)
+        markerCollection = markerManager.newCollection()
+
+        markerViewModel.allMarkers.observe(viewLifecycleOwner, Observer { markerList ->
+            markerCollection.clear()
+            markerList.forEach { markerEntity ->
+                val latLng = LatLng(markerEntity.latitude, markerEntity.longitude)
+                val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title)
+                markerCollection.addMarker(markerOptions)
+            }
+        })
+
+        googleMap.setOnMapClickListener { latLng -> addMarker(latLng) }
+        markerCollection.setOnMarkerClickListener { marker ->
+            showMarkerOptionsDialog(marker)
+            true
+        }
+
+        createBuildingsLayer()
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(39.999396, -83.012504), 15f))
+        getCurrentLocation()
     }
 }
