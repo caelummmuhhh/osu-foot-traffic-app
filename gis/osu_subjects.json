@@ -1,0 +1,2117 @@
+[
+    {
+      "title": "Academic Affairs",
+      "term": "acadaff",
+      "count": 4,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=acadaff",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5227"
+    },
+    {
+      "title": "Accounting and Management Info",
+      "term": "acctmis",
+      "count": 141,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=acctmis",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5228"
+    },
+    {
+      "title": "Adv Computing Cntr Arts & Design",
+      "term": "accad",
+      "count": 27,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=accad",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5229"
+    },
+    {
+      "title": "Aerospace Engineering",
+      "term": "aeroeng",
+      "count": 132,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=aeroeng",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5230"
+    },
+    {
+      "title": "African American & African Std",
+      "term": "afamast",
+      "count": 37,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=afamast",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5231"
+    },
+    {
+      "title": "Agricul Envrmntl & Devlop Econ",
+      "term": "aedecon",
+      "count": 186,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=aedecon",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5232"
+    },
+    {
+      "title": "Agricultural Comm, Ed & Ldrshp",
+      "term": "acel",
+      "count": 196,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=acel",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5233"
+    },
+    {
+      "title": "Agricultural Communication",
+      "term": "agrcomm",
+      "count": 44,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=agrcomm",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5234"
+    },
+    {
+      "title": "Agricultural Systems Mgmt",
+      "term": "agsysmt",
+      "count": 40,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=agsysmt",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5235"
+    },
+    {
+      "title": "Agriscience Education",
+      "term": "ase",
+      "count": 32,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=ase",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5236"
+    },
+    {
+      "title": "Air Force Aerospace Studies",
+      "term": "airsci",
+      "count": 15,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=airsci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5237"
+    },
+    {
+      "title": "American Indian Studies",
+      "term": "aminsts",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=aminsts",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5238"
+    },
+    {
+      "title": "American Sign Language",
+      "term": "asl",
+      "count": 54,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=asl",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5239"
+    },
+    {
+      "title": "Anatomy",
+      "term": "anatomy",
+      "count": 97,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=anatomy",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5240"
+    },
+    {
+      "title": "Animal Sciences",
+      "term": "animsci",
+      "count": 394,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=animsci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5241"
+    },
+    {
+      "title": "Anthropology",
+      "term": "anthrop",
+      "count": 80,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=anthrop",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5242"
+    },
+    {
+      "title": "Arabic",
+      "term": "arabic",
+      "count": 18,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=arabic",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5243"
+    },
+    {
+      "title": "Architecture",
+      "term": "arch",
+      "count": 67,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=arch",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5244"
+    },
+    {
+      "title": "Art",
+      "term": "art",
+      "count": 275,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=art",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5245"
+    },
+    {
+      "title": "Art Education",
+      "term": "arteduc",
+      "count": 119,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=arteduc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5246"
+    },
+    {
+      "title": "Arts and Sciences",
+      "term": "artssci",
+      "count": 120,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=artssci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5247"
+    },
+    {
+      "title": "Asian American Studies",
+      "term": "asamsts",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=asamsts",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5248"
+    },
+    {
+      "title": "Astronomy",
+      "term": "astron",
+      "count": 158,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=astron",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5249"
+    },
+    {
+      "title": "Athletic Training",
+      "term": "athtrng",
+      "count": 15,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=athtrng",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5250"
+    },
+    {
+      "title": "Atmospheric Sciences",
+      "term": "atmossc",
+      "count": 74,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=atmossc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5251"
+    },
+    {
+      "title": "Aviation",
+      "term": "aviatn",
+      "count": 29,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=aviatn",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5252"
+    },
+    {
+      "title": "Biochemistry",
+      "term": "biochem",
+      "count": 186,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=biochem",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5253"
+    },
+    {
+      "title": "Bioethics",
+      "term": "bioethc",
+      "count": 16,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=bioethc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5254"
+    },
+    {
+      "title": "Biological Chem & Pharmacology",
+      "term": "biophrm",
+      "count": 106,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=biophrm",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5255"
+    },
+    {
+      "title": "Biology",
+      "term": "biology",
+      "count": 209,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=biology",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5256"
+    },
+    {
+      "title": "Biomedical Education",
+      "term": "bmea",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=bmea",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5257"
+    },
+    {
+      "title": "Biomedical Engineering",
+      "term": "biomede",
+      "count": 252,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=biomede",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5258"
+    },
+    {
+      "title": "Biomedical Informatics",
+      "term": "bmi",
+      "count": 61,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=bmi",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5259"
+    },
+    {
+      "title": "Biomedical Science",
+      "term": "biomsci",
+      "count": 11,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=biomsci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5260"
+    },
+    {
+      "title": "Biomedical Sciences Grad Prog",
+      "term": "bsgp",
+      "count": 254,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=bsgp",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5261"
+    },
+    {
+      "title": "Biophysics",
+      "term": "biophys",
+      "count": 8,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=biophys",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5262"
+    },
+    {
+      "title": "Bosnian/Croatian/Serbian",
+      "term": "bcs",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=bcs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5263"
+    },
+    {
+      "title": "Bus Admin: Operat & Bus Analyt",
+      "term": "busoba",
+      "count": 161,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=busoba",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5264"
+    },
+    {
+      "title": "Business Admin : Finance",
+      "term": "busfin",
+      "count": 171,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=busfin",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5265"
+    },
+    {
+      "title": "Business Admin : Mgmt & HR",
+      "term": "busmhr",
+      "count": 181,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=busmhr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5266"
+    },
+    {
+      "title": "Business Admin:Marketing & Log",
+      "term": "busml",
+      "count": 116,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=busml",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5267"
+    },
+    {
+      "title": "Business Administration",
+      "term": "busadm",
+      "count": 128,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=busadm",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5268"
+    },
+    {
+      "title": "Cancer Biology and Genetics",
+      "term": "cbg",
+      "count": 33,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=cbg",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5269"
+    },
+    {
+      "title": "Catalan",
+      "term": "catalan",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=catalan",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5270"
+    },
+    {
+      "title": "Center for Lang, Lit & Culture",
+      "term": "cllc",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=cllc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5271"
+    },
+    {
+      "title": "Chemical Physics",
+      "term": "chemphy",
+      "count": 31,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=chemphy",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5272"
+    },
+    {
+      "title": "Chemical and Biomolecular Eng",
+      "term": "cbe",
+      "count": 477,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=cbe",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5273"
+    },
+    {
+      "title": "Chemistry",
+      "term": "chem",
+      "count": 780,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=chem",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5274"
+    },
+    {
+      "title": "Chinese",
+      "term": "chinese",
+      "count": 109,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=chinese",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5275"
+    },
+    {
+      "title": "City and Regional Planning",
+      "term": "crplan",
+      "count": 127,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=crplan",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5276"
+    },
+    {
+      "title": "Civil Engineering",
+      "term": "civilen",
+      "count": 253,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=civilen",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5277"
+    },
+    {
+      "title": "Classics",
+      "term": "clas",
+      "count": 20,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=clas",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5278"
+    },
+    {
+      "title": "Clinical Research",
+      "term": "mcr",
+      "count": 4,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mcr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5279"
+    },
+    {
+      "title": "Communication",
+      "term": "comm",
+      "count": 261,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=comm",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5280"
+    },
+    {
+      "title": "Community Leadership",
+      "term": "comldr",
+      "count": 49,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=comldr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5281"
+    },
+    {
+      "title": "Comparative Studies",
+      "term": "compstd",
+      "count": 138,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=compstd",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5282"
+    },
+    {
+      "title": "Computer Science & Engineering",
+      "term": "cse",
+      "count": 1030,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=cse",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5283"
+    },
+    {
+      "title": "Construction Systems Mgmt",
+      "term": "consysm",
+      "count": 60,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=consysm",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5284"
+    },
+    {
+      "title": "Consumer Sci: Con & Fam Fin Serv",
+      "term": "cscffs",
+      "count": 20,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=cscffs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5285"
+    },
+    {
+      "title": "Consumer Sci: Fashion & Retail",
+      "term": "csfrst",
+      "count": 28,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=csfrst",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5286"
+    },
+    {
+      "title": "Consumer Sci: Hospitality Mgt",
+      "term": "cshspmg",
+      "count": 20,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=cshspmg",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5287"
+    },
+    {
+      "title": "Consumer Sciences",
+      "term": "consci",
+      "count": 48,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=consci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5288"
+    },
+    {
+      "title": "Czech",
+      "term": "czech",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=czech",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5289"
+    },
+    {
+      "title": "Dance",
+      "term": "dance",
+      "count": 212,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=dance",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5290"
+    },
+    {
+      "title": "Dental Hygiene",
+      "term": "denthyg",
+      "count": 29,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=denthyg",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5291"
+    },
+    {
+      "title": "Dentistry",
+      "term": "dent",
+      "count": 151,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=dent",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5292"
+    },
+    {
+      "title": "Design",
+      "term": "design",
+      "count": 131,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=design",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5293"
+    },
+    {
+      "title": "Disability Studies",
+      "term": "dsablst",
+      "count": 18,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=dsablst",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5294"
+    },
+    {
+      "title": "Earth Sciences",
+      "term": "earthsc",
+      "count": 202,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=earthsc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5295"
+    },
+    {
+      "title": "East Asian Languages and Lit",
+      "term": "eall",
+      "count": 12,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=eall",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5296"
+    },
+    {
+      "title": "Economics",
+      "term": "econ",
+      "count": 131,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=econ",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5297"
+    },
+    {
+      "title": "Educ Sts: Counselor Education",
+      "term": "esce",
+      "count": 90,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esce",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5298"
+    },
+    {
+      "title": "Educ Sts: Cultural Foundations",
+      "term": "escfe",
+      "count": 9,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=escfe",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5299"
+    },
+    {
+      "title": "Educ Sts: Education Psychology",
+      "term": "esepsy",
+      "count": 82,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esepsy",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5300"
+    },
+    {
+      "title": "Educ Sts: Educational Admin",
+      "term": "eseadm",
+      "count": 65,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=eseadm",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5301"
+    },
+    {
+      "title": "Educ Sts: Educational Policy",
+      "term": "esepol",
+      "count": 27,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esepol",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5302"
+    },
+    {
+      "title": "Educ Sts: Higher Ed & Stdt Aff",
+      "term": "eshesa",
+      "count": 75,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=eshesa",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5303"
+    },
+    {
+      "title": "Educ Sts: Learning Technologie",
+      "term": "esltech",
+      "count": 42,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esltech",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5304"
+    },
+    {
+      "title": "Educ Sts: Philo & Hist of Educ",
+      "term": "esphe",
+      "count": 36,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esphe",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5305"
+    },
+    {
+      "title": "Educ Sts: Qualitative Research",
+      "term": "esqual",
+      "count": 4,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esqual",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5306"
+    },
+    {
+      "title": "Educ Sts: Qunt Rsch Eval & Msrmt",
+      "term": "esqrem",
+      "count": 56,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esqrem",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5307"
+    },
+    {
+      "title": "Educ Sts: School Psychology",
+      "term": "esspsy",
+      "count": 48,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=esspsy",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5308"
+    },
+    {
+      "title": "Educ Sts: Special Education",
+      "term": "essped",
+      "count": 113,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=essped",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5309"
+    },
+    {
+      "title": "Educ Sts: Wkfrc Dvlpt & Educ",
+      "term": "eswde",
+      "count": 67,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=eswde",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5310"
+    },
+    {
+      "title": "Education and Human Ecology",
+      "term": "ehe",
+      "count": 18,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=ehe",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5311"
+    },
+    {
+      "title": "Educational Studies",
+      "term": "educst",
+      "count": 81,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=educst",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5312"
+    },
+    {
+      "title": "Electrical and Computer Eng",
+      "term": "ece",
+      "count": 1243,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=ece",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5313"
+    },
+    {
+      "title": "Engineering",
+      "term": "engr",
+      "count": 197,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=engr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5314"
+    },
+    {
+      "title": "Engineering Education",
+      "term": "engredu",
+      "count": 23,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=engredu",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5315"
+    },
+    {
+      "title": "English",
+      "term": "english",
+      "count": 220,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=english",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5316"
+    },
+    {
+      "title": "Entomology",
+      "term": "entmlgy",
+      "count": 149,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=entmlgy",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5317"
+    },
+    {
+      "title": "Environment & Natural Resource",
+      "term": "enr",
+      "count": 470,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=enr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5318"
+    },
+    {
+      "title": "Environmental Engineering",
+      "term": "enveng",
+      "count": 104,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=enveng",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5319"
+    },
+    {
+      "title": "Environmental Science",
+      "term": "envsci",
+      "count": 1,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=envsci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5320"
+    },
+    {
+      "title": "Ethnic Studies",
+      "term": "ethnstd",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=ethnstd",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5321"
+    },
+    {
+      "title": "Evol, Ecology & Organismal Bio",
+      "term": "eeob",
+      "count": 253,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=eeob",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5322"
+    },
+    {
+      "title": "Exploration",
+      "term": "exp",
+      "count": 27,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=exp",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5323"
+    },
+    {
+      "title": "Film Studies",
+      "term": "filmstd",
+      "count": 10,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=filmstd",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5324"
+    },
+    {
+      "title": "Food Science & Technology",
+      "term": "fdscte",
+      "count": 229,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=fdscte",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5325"
+    },
+    {
+      "title": "Food, Agricul & Bio Engineer",
+      "term": "fabeng",
+      "count": 98,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=fabeng",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5326"
+    },
+    {
+      "title": "Food, Agricul, & Enviro Sci",
+      "term": "faes",
+      "count": 22,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=faes",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5327"
+    },
+    {
+      "title": "French",
+      "term": "french",
+      "count": 61,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=french",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5328"
+    },
+    {
+      "title": "French and Italian",
+      "term": "frit",
+      "count": 12,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=frit",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5329"
+    },
+    {
+      "title": "General Education",
+      "term": "gened",
+      "count": 468,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=gened",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5330"
+    },
+    {
+      "title": "Geodetic Sciences MPS",
+      "term": "geoscim",
+      "count": 45,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=geoscim",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5331"
+    },
+    {
+      "title": "Geography",
+      "term": "geog",
+      "count": 310,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=geog",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5332"
+    },
+    {
+      "title": "German",
+      "term": "german",
+      "count": 98,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=german",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5333"
+    },
+    {
+      "title": "Graduate School",
+      "term": "gradsch",
+      "count": 5,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=gradsch",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5334"
+    },
+    {
+      "title": "Greek",
+      "term": "greek",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=greek",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5335"
+    },
+    {
+      "title": "Health Care Innovation",
+      "term": "hcinnov",
+      "count": 8,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hcinnov",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5336"
+    },
+    {
+      "title": "Health Info Mgt & Systems",
+      "term": "hims",
+      "count": 17,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hims",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5337"
+    },
+    {
+      "title": "Health and Rehabilitation Sci",
+      "term": "hthrhsc",
+      "count": 435,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hthrhsc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5338"
+    },
+    {
+      "title": "Health and Wellness",
+      "term": "hw",
+      "count": 7,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hw",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5339"
+    },
+    {
+      "title": "Hebrew",
+      "term": "hebrew",
+      "count": 7,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hebrew",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5340"
+    },
+    {
+      "title": "Hindi",
+      "term": "hindi",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hindi",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5341"
+    },
+    {
+      "title": "History",
+      "term": "history",
+      "count": 735,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=history",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5342"
+    },
+    {
+      "title": "History of Art",
+      "term": "histart",
+      "count": 53,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=histart",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5343"
+    },
+    {
+      "title": "Honors, University",
+      "term": "honors",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=honors",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5344"
+    },
+    {
+      "title": "Horticulture and Crop Science",
+      "term": "hcs",
+      "count": 409,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hcs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5345"
+    },
+    {
+      "title": "Human Dev and Family Science",
+      "term": "hdfs",
+      "count": 142,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=hdfs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5346"
+    },
+    {
+      "title": "Human Nutrition",
+      "term": "humnntr",
+      "count": 109,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=humnntr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5347"
+    },
+    {
+      "title": "Industrial and Sys Engineering",
+      "term": "ise",
+      "count": 258,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=ise",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5348"
+    },
+    {
+      "title": "Internal Medicine",
+      "term": "intmed",
+      "count": 84,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=intmed",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5349"
+    },
+    {
+      "title": "International Studies",
+      "term": "intstds",
+      "count": 37,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=intstds",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5350"
+    },
+    {
+      "title": "Islamic Studies",
+      "term": "islam",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=islam",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5351"
+    },
+    {
+      "title": "Italian",
+      "term": "italian",
+      "count": 33,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=italian",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5352"
+    },
+    {
+      "title": "Japanese",
+      "term": "japanse",
+      "count": 107,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=japanse",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5353"
+    },
+    {
+      "title": "Jewish Studies",
+      "term": "jewshst",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=jewshst",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5354"
+    },
+    {
+      "title": "Kinesiology",
+      "term": "kinesio",
+      "count": 15,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=kinesio",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5355"
+    },
+    {
+      "title": "Kinesiology: Health & Exercs Sci",
+      "term": "knhes",
+      "count": 74,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=knhes",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5356"
+    },
+    {
+      "title": "Kinesiology:Physical Education",
+      "term": "knpe",
+      "count": 38,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=knpe",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5357"
+    },
+    {
+      "title": "Kinesiology:Sprt, Ftns & Hlth Pr",
+      "term": "knsfhp",
+      "count": 182,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=knsfhp",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5358"
+    },
+    {
+      "title": "Kinesiology:Spt Indsty Spt Mgt",
+      "term": "knsism",
+      "count": 57,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=knsism",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5359"
+    },
+    {
+      "title": "Knowlton",
+      "term": "know",
+      "count": 13,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=know",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5360"
+    },
+    {
+      "title": "Korean",
+      "term": "korean",
+      "count": 37,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=korean",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5361"
+    },
+    {
+      "title": "Landscape Architecture",
+      "term": "larch",
+      "count": 83,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=larch",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5362"
+    },
+    {
+      "title": "Latin",
+      "term": "latin",
+      "count": 15,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=latin",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5363"
+    },
+    {
+      "title": "Law",
+      "term": "law",
+      "count": 120,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=law",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5364"
+    },
+    {
+      "title": "Linguistics",
+      "term": "ling",
+      "count": 223,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=ling",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5365"
+    },
+    {
+      "title": "Master of Business Admin",
+      "term": "mba",
+      "count": 31,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mba",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5366"
+    },
+    {
+      "title": "Master of Dietetics & Nutritio",
+      "term": "mdn",
+      "count": 40,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mdn",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5367"
+    },
+    {
+      "title": "Materials Science and Engineer",
+      "term": "matscen",
+      "count": 161,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=matscen",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5368"
+    },
+    {
+      "title": "Mathematics",
+      "term": "math",
+      "count": 487,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=math",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5369"
+    },
+    {
+      "title": "Meat Science",
+      "term": "meatsci",
+      "count": 40,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=meatsci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5370"
+    },
+    {
+      "title": "Mechanical Engineering",
+      "term": "mecheng",
+      "count": 475,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mecheng",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5371"
+    },
+    {
+      "title": "Medical Dietetics",
+      "term": "meddiet",
+      "count": 4,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=meddiet",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5372"
+    },
+    {
+      "title": "Medical Laboratory Science",
+      "term": "medlbs",
+      "count": 32,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=medlbs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5373"
+    },
+    {
+      "title": "Medicine, College of",
+      "term": "medcoll",
+      "count": 23,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=medcoll",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5374"
+    },
+    {
+      "title": "Medieval & Renaissance Studies",
+      "term": "medren",
+      "count": 13,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=medren",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5375"
+    },
+    {
+      "title": "Microbial Infection & Immunity",
+      "term": "medmcim",
+      "count": 183,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=medmcim",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5376"
+    },
+    {
+      "title": "Microbiology",
+      "term": "micrbio",
+      "count": 339,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=micrbio",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5377"
+    },
+    {
+      "title": "Military Science",
+      "term": "milsci",
+      "count": 20,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=milsci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5378"
+    },
+    {
+      "title": "Modern Greek",
+      "term": "mdrngrk",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mdrngrk",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5379"
+    },
+    {
+      "title": "Molec, Cellular, Dvlpmtl Bio",
+      "term": "mcdbio",
+      "count": 7,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mcdbio",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5380"
+    },
+    {
+      "title": "Molecular Genetics",
+      "term": "molgen",
+      "count": 432,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=molgen",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5381"
+    },
+    {
+      "title": "Moving Image Production",
+      "term": "mvngimg",
+      "count": 7,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mvngimg",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5382"
+    },
+    {
+      "title": "Music",
+      "term": "music",
+      "count": 966,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=music",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5383"
+    },
+    {
+      "title": "Naval Science",
+      "term": "navalsc",
+      "count": 12,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=navalsc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5384"
+    },
+    {
+      "title": "Near Eastrn Lang and Cultures",
+      "term": "nelc",
+      "count": 15,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=nelc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5385"
+    },
+    {
+      "title": "Neurological Surgery",
+      "term": "neursgy",
+      "count": 8,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=neursgy",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5386"
+    },
+    {
+      "title": "Neurology",
+      "term": "neuro",
+      "count": 4,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=neuro",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5387"
+    },
+    {
+      "title": "Neuroscience Department",
+      "term": "neurosc",
+      "count": 47,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=neurosc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5388"
+    },
+    {
+      "title": "Neuroscience Graduate Studies",
+      "term": "neurogs",
+      "count": 1,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=neurogs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5389"
+    },
+    {
+      "title": "Nuclear Engineering",
+      "term": "nuclren",
+      "count": 62,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=nuclren",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5390"
+    },
+    {
+      "title": "Nursing",
+      "term": "nursing",
+      "count": 158,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=nursing",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5391"
+    },
+    {
+      "title": "Nursing Advancement",
+      "term": "nrsadvn",
+      "count": 22,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=nrsadvn",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5392"
+    },
+    {
+      "title": "Nursing Practice",
+      "term": "nrsprct",
+      "count": 34,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=nrsprct",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5393"
+    },
+    {
+      "title": "Occupational Therapy",
+      "term": "occther",
+      "count": 49,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=occther",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5394"
+    },
+    {
+      "title": "Ohio State Biochemistry Prg",
+      "term": "osbp",
+      "count": 87,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=osbp",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5395"
+    },
+    {
+      "title": "Optometry",
+      "term": "optom",
+      "count": 35,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=optom",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5396"
+    },
+    {
+      "title": "Otolaryngology",
+      "term": "otolarn",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=otolarn",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5397"
+    },
+    {
+      "title": "Pathology",
+      "term": "pathol",
+      "count": 46,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pathol",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5398"
+    },
+    {
+      "title": "Pediatrics",
+      "term": "peds",
+      "count": 109,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=peds",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5399"
+    },
+    {
+      "title": "Persian",
+      "term": "persian",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=persian",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5400"
+    },
+    {
+      "title": "Pharmacy",
+      "term": "phr",
+      "count": 199,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=phr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5401"
+    },
+    {
+      "title": "Philosophy",
+      "term": "philos",
+      "count": 169,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=philos",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5402"
+    },
+    {
+      "title": "Physical Therapy",
+      "term": "physthr",
+      "count": 80,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=physthr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5403"
+    },
+    {
+      "title": "Physics",
+      "term": "physics",
+      "count": 608,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=physics",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5404"
+    },
+    {
+      "title": "Physiology and Cell Biology",
+      "term": "physio",
+      "count": 92,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=physio",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5405"
+    },
+    {
+      "title": "Plant Pathology",
+      "term": "plntpth",
+      "count": 176,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=plntpth",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5406"
+    },
+    {
+      "title": "Polish",
+      "term": "polish",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=polish",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5407"
+    },
+    {
+      "title": "Political Science",
+      "term": "politsc",
+      "count": 149,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=politsc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5408"
+    },
+    {
+      "title": "Portuguese",
+      "term": "portgse",
+      "count": 21,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=portgse",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5409"
+    },
+    {
+      "title": "Psychiatry and Behavioral Heal",
+      "term": "psybhlh",
+      "count": 59,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=psybhlh",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5410"
+    },
+    {
+      "title": "Psychology",
+      "term": "psych",
+      "count": 154,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=psych",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5411"
+    },
+    {
+      "title": "Pub Hlth: Biostatistics",
+      "term": "pubhbio",
+      "count": 17,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pubhbio",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5412"
+    },
+    {
+      "title": "Pub Hlth: Envirmtl Hlth Scis",
+      "term": "pubhehs",
+      "count": 11,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pubhehs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5413"
+    },
+    {
+      "title": "Pub Hlth: Epidemiology",
+      "term": "pubhepi",
+      "count": 23,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pubhepi",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5414"
+    },
+    {
+      "title": "Pub Hlth: Hlth Bhvr & Hlth Prom",
+      "term": "pubhhbp",
+      "count": 10,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pubhhbp",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5415"
+    },
+    {
+      "title": "Pub Hlth: Hlth Srvcs Mgt & Plcy",
+      "term": "pubhhmp",
+      "count": 18,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pubhhmp",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5416"
+    },
+    {
+      "title": "Public Affairs, John Glenn Sch",
+      "term": "pubafrs",
+      "count": 142,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pubafrs",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5417"
+    },
+    {
+      "title": "Public Health",
+      "term": "pubhlth",
+      "count": 35,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=pubhlth",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5418"
+    },
+    {
+      "title": "Quechua",
+      "term": "quechua",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=quechua",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5419"
+    },
+    {
+      "title": "RADONC",
+      "term": "radonc",
+      "count": 33,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=radonc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5420"
+    },
+    {
+      "title": "Radiologic Sciences & Therapy",
+      "term": "radsci",
+      "count": 28,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=radsci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5421"
+    },
+    {
+      "title": "Radiology",
+      "term": "radiolg",
+      "count": 5,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=radiolg",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5422"
+    },
+    {
+      "title": "Religious Studies",
+      "term": "relstds",
+      "count": 14,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=relstds",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5423"
+    },
+    {
+      "title": "Respiratory Therapy",
+      "term": "respthr",
+      "count": 26,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=respthr",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5424"
+    },
+    {
+      "title": "Romanian",
+      "term": "romania",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=romania",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5425"
+    },
+    {
+      "title": "Rural Sociology",
+      "term": "rurlsoc",
+      "count": 7,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=rurlsoc",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5426"
+    },
+    {
+      "title": "Russian",
+      "term": "russian",
+      "count": 80,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=russian",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5427"
+    },
+    {
+      "title": "Scholars, University",
+      "term": "scholar",
+      "count": 8,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=scholar",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5428"
+    },
+    {
+      "title": "Slavic Languages & Literatures",
+      "term": "slavic",
+      "count": 99,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=slavic",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5429"
+    },
+    {
+      "title": "Social Work",
+      "term": "socwork",
+      "count": 612,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=socwork",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5430"
+    },
+    {
+      "title": "Sociology",
+      "term": "sociol",
+      "count": 159,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=sociol",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5431"
+    },
+    {
+      "title": "Somali",
+      "term": "somali",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=somali",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5432"
+    },
+    {
+      "title": "South Asia Studies",
+      "term": "sasia",
+      "count": 4,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=sasia",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5433"
+    },
+    {
+      "title": "Spanish",
+      "term": "spanish",
+      "count": 233,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=spanish",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5434"
+    },
+    {
+      "title": "Speech and Hearing Science",
+      "term": "sphhrng",
+      "count": 288,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=sphhrng",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5435"
+    },
+    {
+      "title": "Statistics",
+      "term": "stat",
+      "count": 476,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=stat",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5436"
+    },
+    {
+      "title": "Surgery",
+      "term": "surgery",
+      "count": 18,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=surgery",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5437"
+    },
+    {
+      "title": "Swahili",
+      "term": "swahili",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=swahili",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5438"
+    },
+    {
+      "title": "Swedish",
+      "term": "swedish",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=swedish",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5439"
+    },
+    {
+      "title": "Theatre",
+      "term": "theatre",
+      "count": 118,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=theatre",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5440"
+    },
+    {
+      "title": "Translational Data Analytics",
+      "term": "gradtda",
+      "count": 4,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=gradtda",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5441"
+    },
+    {
+      "title": "Turkish",
+      "term": "turkish",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=turkish",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5442"
+    },
+    {
+      "title": "Urdu",
+      "term": "urdu",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=urdu",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5443"
+    },
+    {
+      "title": "Urology",
+      "term": "urology",
+      "count": 1,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=urology",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5444"
+    },
+    {
+      "title": "Uzbek",
+      "term": "uzbek",
+      "count": 2,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=uzbek",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5445"
+    },
+    {
+      "title": "Veterinary Biosciences",
+      "term": "vetbios",
+      "count": 21,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=vetbios",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5446"
+    },
+    {
+      "title": "Veterinary Clinical Sciences",
+      "term": "vetclin",
+      "count": 20,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=vetclin",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5447"
+    },
+    {
+      "title": "Veterinary Medicine",
+      "term": "vmcoll",
+      "count": 56,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=vmcoll",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5448"
+    },
+    {
+      "title": "Veterinary Preventive Medicine",
+      "term": "vetprev",
+      "count": 40,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=vetprev",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5449"
+    },
+    {
+      "title": "Vision Science",
+      "term": "vissci",
+      "count": 102,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=vissci",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5450"
+    },
+    {
+      "title": "Welding Engineering",
+      "term": "weldeng",
+      "count": 94,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=weldeng",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5451"
+    },
+    {
+      "title": "Women's, Gender & Sexuality Sts",
+      "term": "wgsst",
+      "count": 90,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=wgsst",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5452"
+    },
+    {
+      "title": "Yiddish",
+      "term": "yiddish",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=yiddish",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5453"
+    },
+    {
+      "title": "dne",
+      "term": "dne",
+      "count": 9,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=dne",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5454"
+    },
+    {
+      "title": "mmt",
+      "term": "mmt",
+      "count": 1,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=mmt",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5455"
+    },
+    {
+      "title": "tlcte",
+      "term": "tlcte",
+      "count": 6,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=tlcte",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5456"
+    },
+    {
+      "title": "tled",
+      "term": "tled",
+      "count": 23,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=tled",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5457"
+    },
+    {
+      "title": "tlielp",
+      "term": "tlielp",
+      "count": 44,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=tlielp",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5458"
+    },
+    {
+      "title": "tlistem",
+      "term": "tlistem",
+      "count": 7,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=tlistem",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5459"
+    },
+    {
+      "title": "tllll",
+      "term": "tllll",
+      "count": 3,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=tllll",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5460"
+    },
+    {
+      "title": "tlted",
+      "term": "tlted",
+      "count": 34,
+      "selected": false,
+      "link": "?q=m&client=class-search-ui&campus=col&term=1258&p=1&subject=tlted",
+      "removeLink": "?q=m&client=class-search-ui&campus=col&term=1258&p=1",
+      "$$hashKey": "object:5461"
+    }
+  ]
