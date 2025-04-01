@@ -50,7 +50,6 @@ class MapFragment : Fragment() {
     private var buildingsLayer: GeoJsonLayer? = null
     private val LOCATION_PERMISSION_REQUEST_CODE = 1001
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var userMarker: Marker? = null
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
@@ -125,6 +124,7 @@ class MapFragment : Fragment() {
             googleMap.clear()
         }
     }
+    
     private fun createBuildingsLayer() {
         // Get the .geojson file from db and parse it into JsonOBJECT
         val downloadByteLimit: Long = 2 * 1024 * 1024
@@ -239,14 +239,12 @@ class MapFragment : Fragment() {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest1.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? -> location?.let {
                 val userLatLng = LatLng(it.latitude, it.longitude)
-               //Remove existing marker if present
-                userMarker?.remove()
-
-                //Set new marker
-                userMarker = googleMap.addMarker(MarkerOptions().position(userLatLng).title("Your Location").icon(
-                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
                 //Move camera to marker
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
+                googleMap.isMyLocationEnabled = true
+                googleMap.uiSettings.isMapToolbarEnabled = true
+                googleMap.uiSettings.isZoomControlsEnabled = true
+                googleMap.uiSettings.isMyLocationButtonEnabled = true
             } ?: run {
                 Toast.makeText(requireContext(), "Location unavailable", Toast.LENGTH_SHORT).show()
             } }
