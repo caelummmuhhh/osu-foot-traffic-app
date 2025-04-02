@@ -1,6 +1,7 @@
 package com.example.osufoottrafficapp.ui.fragment
 
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import androidx.fragment.app.Fragment
 import android.os.Bundle
@@ -16,6 +17,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.example.osufoottrafficapp.R
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -28,9 +32,11 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.google.firebase.Firebase
 import com.google.firebase.storage.storage
+import com.google.maps.android.PolyUtil
 import com.google.maps.android.collections.MarkerManager
 import org.json.JSONObject
 import android.Manifest as Manifest1
@@ -50,7 +56,8 @@ class MapFragment : Fragment() {
     private var buildingsLayer: GeoJsonLayer? = null
     private val LOCATION_PERMISSION_REQUEST_CODE = 1001
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var userMarker: Marker? = null
+    private var currentRoute: com.google.android.gms.maps.model.Polyline? = null
+    private var userLocationMarker: Marker? = null
 
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
@@ -80,6 +87,9 @@ class MapFragment : Fragment() {
         markerCollection.setOnMarkerClickListener { marker ->
             //Handle when a specific marker is clicked
             showMarkerOptionsDialog(marker)
+            getCurrentLocation { userLocation ->
+                fetchShortestRoute(userLocation, marker.position)
+            }
             //Return true if successful handle
             true
         }
@@ -117,6 +127,8 @@ class MapFragment : Fragment() {
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback) // Ensure the map reloads when coming back
+        // Fetch and update user location
+        getCurrentLocation()
     }
 
     override fun onDestroyView() {
@@ -125,6 +137,7 @@ class MapFragment : Fragment() {
             googleMap.clear()
         }
     }
+    
     private fun createBuildingsLayer() {
         // Get the .geojson file from db and parse it into JsonOBJECT
         val downloadByteLimit: Long = 2 * 1024 * 1024
@@ -195,25 +208,36 @@ class MapFragment : Fragment() {
     }
     //Called if update button is pressed
     private fun updateMarker(marker: Marker, newTitle: String) {
-       val updatedMarker = markerCollection.addMarker( MarkerOptions().position(marker.position).title(newTitle))
-        //Save the marker in the database
+        val updatedMarker = markerCollection.addMarker(
+            MarkerOptions().position(marker.position).title(newTitle)
+        )
+
         updatedMarker?.let {
             val markerEntity = MarkerEntity(
                 title = it.title ?: newTitle,
                 latitude = it.position.latitude,
                 longitude = it.position.longitude
             )
-            //Insert the marker into the database
             markerViewModel.insertMarker(markerEntity)
             markerCollection.remove(marker)
+
+            // Remove the existing route when updating a marker
+            currentRoute?.remove()
+            currentRoute = null
         }
     }
 
+
     private fun deleteMarker() {
-        //Deletes all markers from the database
+        // Deletes all markers from the database
         markerViewModel.deleteAllMarkers()
         markerCollection.clear()
+
+        // Clear the route from the map
+        currentRoute?.remove()
+        currentRoute = null
     }
+
 
     //Check for location permissions
     private fun checkLocationPermission() {
@@ -233,23 +257,50 @@ class MapFragment : Fragment() {
             }
         }
     }
+    //Default
     private fun getCurrentLocation() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest1.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? -> location?.let {
-                val userLatLng = LatLng(it.latitude, it.longitude)
-               //Remove existing marker if present
-                userMarker?.remove()
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val userLatLng = LatLng(it.latitude, it.longitude)
 
-                //Set new marker
-                userMarker = googleMap.addMarker(MarkerOptions().position(userLatLng).title("Your Location").icon(
-                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
-                //Move camera to marker
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
-            } ?: run {
-                Toast.makeText(requireContext(), "Location unavailable", Toast.LENGTH_SHORT).show()
-            } }
+                    // Move the camera to the user's location
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
+
+                    if (userLocationMarker == null) {
+                        // Add the marker for the first time
+                        userLocationMarker = googleMap.addMarker(
+                            MarkerOptions()
+                                .position(userLatLng)
+                                .title("You are here")
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        )
+                    } else {
+                        // Just update the marker position instead of creating a new one
+                        userLocationMarker?.position = userLatLng
+                    }
+                } ?: run {
+                    Toast.makeText(requireContext(), "Location unavailable", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    //Routing
+    private fun getCurrentLocation(callback: (LatLng) -> Unit) {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest1.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val userLatLng = LatLng(it.latitude, it.longitude)
+                    callback(userLatLng)
+                } ?: run {
+                    Toast.makeText(requireContext(), "Location unavailable", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -278,4 +329,39 @@ class MapFragment : Fragment() {
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(39.999396, -83.012504), 15f))
         getCurrentLocation()
     }
+    private fun fetchShortestRoute(start: LatLng, end: LatLng) {
+        val apiKey = "AIzaSyCkwfieddAavvjI6oR3FSKkLm9EidSq8F8"
+        val url = "https://maps.googleapis.com/maps/api/directions/json?origin=${start.latitude},${start.longitude}&destination=${end.latitude},${end.longitude}&mode=walking&key=$apiKey"
+
+        val requestQueue = Volley.newRequestQueue(requireContext())
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val routes = response.getJSONArray("routes")
+                if (routes.length() > 0) {
+                    val points = routes.getJSONObject(0)
+                        .getJSONObject("overview_polyline")
+                        .getString("points")
+                    drawRouteOnMap(points)
+                }
+            },
+            { error ->
+                Log.e("MapFragment", "Error fetching route: ${error.message}")
+            })
+
+        requestQueue.add(jsonObjectRequest)
+    }
+    private fun drawRouteOnMap(encodedPolyline: String) {
+        // Remove the existing route before drawing a new one
+        currentRoute?.remove()
+
+        val polylineOptions = PolylineOptions()
+            .color(Color.BLUE)
+            .width(8f)
+            .addAll(PolyUtil.decode(encodedPolyline))
+
+        currentRoute = googleMap.addPolyline(polylineOptions)
+    }
+
+
 }

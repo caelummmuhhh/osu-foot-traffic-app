@@ -37,3 +37,9 @@ Link: https://www.asc.ohio-state.edu/barrett.3/schedule/
 - Don't know who maintains this, how it updates, or where the info is coming from, but it seems accurate.
 - Data available in .txt formatted into columns of data.
 
+# How Traffic Data is Calculated
+Assumptions/Facts:
+- The average human walks at a pace of 1.2-1.3 m/s
+
+### Sidewalk Centerline Data Segmentation
+Segments/LineStrings longer than 75 meters are split into multiple sub-segments of 75 meters each. The final sub-segment may be 75 meters or shorter, depending on the remaining length. This is based on the assumption that the average human covers 72-84 meters in a minute.
