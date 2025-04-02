@@ -17,10 +17,20 @@ class MarkerViewModel(application: Application) : AndroidViewModel(application) 
         allMarkers = repository.allMarkers
     }
 
-    // Method to update the marker
-    fun updateMarker(marker: MarkerEntity) = viewModelScope.launch {
-        repository.updateMarker(marker)
+    fun getMarkerByLocation(latitude: Double, longitude: Double, callback: (MarkerEntity?) -> Unit) {
+        viewModelScope.launch {
+            val marker = repository.getMarkerByLocation(latitude, longitude)
+            callback(marker)
+        }
     }
+
+    fun updateMarker(marker: MarkerEntity) {
+        viewModelScope.launch {
+            repository.updateMarker(marker)
+        }
+    }
+
+
 
     fun insertMarker(marker: MarkerEntity) = viewModelScope.launch {
             repository.insertMarker(marker)
