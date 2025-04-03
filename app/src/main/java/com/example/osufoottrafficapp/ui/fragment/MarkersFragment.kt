@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,5 +41,11 @@ class MarkersFragment : Fragment() {
         markerViewModel.allMarkers.observe(viewLifecycleOwner, Observer { markers ->
             adapter.submitList(markers)
         })
+
+        // Find delete button and set click listener
+        val deleteAllButton: Button = view.findViewById(R.id.deleteAllMarkersButton)
+        deleteAllButton.setOnClickListener {
+            markerViewModel.deleteAllMarkers()
+        }
     }
 }
