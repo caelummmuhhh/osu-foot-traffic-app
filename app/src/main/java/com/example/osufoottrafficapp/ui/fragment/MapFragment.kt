@@ -202,9 +202,8 @@ class MapFragment : Fragment() {
             }
         }
 
-        //Delete will remove all Markers
-        builder.setNegativeButton("Delete All Markers") { _, _ ->
-            deleteMarker()
+        builder.setNegativeButton("Delete") { _, _ ->
+            deleteMarker(marker) // Delete only this marker
         }
 
         //Cancel closes the dialogue
@@ -231,10 +230,16 @@ class MapFragment : Fragment() {
 
 
 
-    private fun deleteMarker() {
-        // Deletes all markers from the database
-        markerViewModel.deleteAllMarkers()
-        markerCollection.clear()
+    private fun deleteMarker(marker: Marker) {
+        // Find and delete the marker from the database
+        markerViewModel.getMarkerByLocation(marker.position.latitude, marker.position.longitude) { existingMarker ->
+            existingMarker?.let {
+                markerViewModel.deleteMarker(it) // Remove from Room database
+            }
+        }
+
+        // Remove the marker from the map
+        markerCollection.remove(marker)
 
         // Clear the route from the map
         currentRoute?.remove()
