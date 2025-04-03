@@ -9,5 +9,5 @@
 
     <string name="route_traffic_pref_title">Avoid High Traffic Area</string>
     <string name="map_button_name">Map</string>
-    <string name="settings_button_name">Settings</string>
+    <string name="markers_button_name">Markers</string>
 </resources>

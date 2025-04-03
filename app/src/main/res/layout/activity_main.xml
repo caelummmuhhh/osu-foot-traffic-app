@@ -22,12 +22,12 @@
             android:text="@string/map_button_name" />
 
         <Button
-            android:id="@+id/settings_button"
+            android:id="@+id/markers_button"
             android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
-            android:text="@string/settings_button_name" />
+            android:text="@string/markers_button_name" />
 
 </RelativeLayout>

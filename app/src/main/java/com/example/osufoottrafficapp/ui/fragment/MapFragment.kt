@@ -214,24 +214,21 @@ class MapFragment : Fragment() {
 
     //Called if update button is pressed
     private fun updateMarker(marker: Marker, newTitle: String) {
-        val updatedMarker = markerCollection.addMarker(
-            MarkerOptions().position(marker.position).title(newTitle)
-        )
+        // Retrieve the existing marker entity from the ViewModel
+        markerViewModel.getMarkerByLocation(marker.position.latitude, marker.position.longitude) { existingMarker ->
+            if (existingMarker != null) {
+                // If marker exists, update its title and update it in the database
+                val updatedMarker = existingMarker.copy(title = newTitle)
+                markerViewModel.updateMarker(updatedMarker)
 
-        updatedMarker?.let {
-            val markerEntity = MarkerEntity(
-                title = it.title ?: newTitle,
-                latitude = it.position.latitude,
-                longitude = it.position.longitude
-            )
-            markerViewModel.insertMarker(markerEntity)
-            markerCollection.remove(marker)
-
-            // Remove the existing route when updating a marker
-            currentRoute?.remove()
-            currentRoute = null
+                // Remove the old marker and add the updated one to the map
+                markerCollection.remove(marker)
+                markerCollection.addMarker(MarkerOptions().position(marker.position).title(newTitle))
+            }
         }
     }
+
+
 
 
     private fun deleteMarker() {

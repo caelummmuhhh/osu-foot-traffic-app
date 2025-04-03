@@ -1,15 +1,13 @@
 package com.example.osufoottrafficapp
 
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
 import com.example.osufoottrafficapp.databinding.ActivityMainBinding
 import com.example.osufoottrafficapp.ui.fragment.MapFragment
-import com.example.osufoottrafficapp.ui.fragment.SettingsFragment
+import com.example.osufoottrafficapp.ui.fragment.MarkersFragment
 
 private const val TAG = "MainActivity"
 
@@ -23,16 +21,16 @@ class MainActivity : AppCompatActivity()/*, OnMapReadyCallback*/ {
         setContentView(binding.root)
 
         binding.mapButton.setOnClickListener(::mapButtonOnClickListener)
-        binding.settingsButton.setOnClickListener(::settingsButtonOnClickListener)
+        binding.markersButton.setOnClickListener(::markersButtonOnClickListener)
 
         if (savedInstanceState == null) {
             val mapFragment = MapFragment()
-            val settingsFragment = SettingsFragment()
+            val markersFragment = MarkersFragment()
 
             supportFragmentManager.beginTransaction()
                 .add(R.id.main_fragment_container, mapFragment, "MAP_FRAGMENT")
-                .add(R.id.main_fragment_container, settingsFragment, "SETTINGS_FRAGMENT")
-                .hide(settingsFragment) // Start with settings hidden
+                .add(R.id.main_fragment_container, markersFragment, "MARKERS_FRAGMENT")
+                .hide(markersFragment)
                 .commit()
         }
     }
@@ -42,9 +40,9 @@ class MainActivity : AppCompatActivity()/*, OnMapReadyCallback*/ {
         showFragment(mapFragment)
     }
 
-    private fun settingsButtonOnClickListener(view: View) {
-        val settingsFragment = supportFragmentManager.findFragmentByTag("SETTINGS_FRAGMENT") ?: SettingsFragment()
-        showFragment(settingsFragment)
+    private fun markersButtonOnClickListener(view: View) {
+        val markersFragment = supportFragmentManager.findFragmentByTag("MARKERS_FRAGMENT") ?: MarkersFragment()
+        showFragment(markersFragment)
     }
 
 
