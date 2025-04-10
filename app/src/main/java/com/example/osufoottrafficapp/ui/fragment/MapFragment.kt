@@ -106,7 +106,9 @@ class MapFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback) // Ensure the map reloads when coming back
         // Fetch and update user location
-        getCurrentLocation()
+        if (::googleMap.isInitialized) {
+            getCurrentLocation()
+        }
     }
 
     override fun onDestroyView() {
@@ -290,6 +292,7 @@ class MapFragment : Fragment() {
         ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 location?.let {
+                    if (!::googleMap.isInitialized) return@addOnSuccessListener
                     val userLatLng = LatLng(it.latitude, it.longitude)
 
                     // Move the camera to the user's location

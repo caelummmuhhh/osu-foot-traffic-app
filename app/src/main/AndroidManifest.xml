@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OSUFootTrafficApp"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:configChanges="orientation|screenSize">
 
         <profileable android:shell="true"/>
         <meta-data
