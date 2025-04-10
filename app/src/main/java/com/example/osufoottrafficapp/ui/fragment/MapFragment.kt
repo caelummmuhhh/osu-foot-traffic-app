@@ -1,5 +1,6 @@
 package com.example.osufoottrafficapp.ui.fragment
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
@@ -50,6 +51,10 @@ import android.Manifest as Manifest1
 class MapFragment : Fragment() {
 
     private val TAG = "MapFragment"
+    private val PREFS_NAME = "MapColorPrefs"
+    private val KEY_LOCATION_COLOR = "location_color"
+    private val KEY_ROUTE_COLOR = "route_color"
+    private val KEY_MARKER_COLOR = "marker_color"
     private lateinit var markerViewModel: MarkerViewModel
     private lateinit var googleMap: GoogleMap
     private lateinit var markerManager: MarkerManager
@@ -168,23 +173,27 @@ class MapFragment : Fragment() {
 
     //Add a marker to the map and save it to the database
     fun addMarker(latLng: LatLng) {
-        //Create a new marker with a default title
-        val markerOptions = MarkerOptions().position(latLng).title("New Marker")
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val markerColorName = prefs.getString(KEY_MARKER_COLOR, "red")!!
+        val markerColor = getColorFromName(markerColorName)
 
-        //Add the marker to the map
+        val markerOptions = MarkerOptions()
+            .position(latLng)
+            .title("New Marker")
+            .icon(BitmapDescriptorFactory.defaultMarker(getHueFromColor(markerColor)))
+
         val marker = markerCollection.addMarker(markerOptions)
 
-        //Save the marker in the database
         marker?.let {
             val markerEntity = MarkerEntity(
                 title = it.title ?: "Unnamed Marker",
                 latitude = it.position.latitude,
                 longitude = it.position.longitude
             )
-            //Insert the marker into the database
             markerViewModel.insertMarker(markerEntity)
         }
     }
+
 
     //Display a dialog when a marker is clicked
     fun showMarkerOptionsDialog(marker: Marker) {
@@ -301,14 +310,16 @@ class MapFragment : Fragment() {
                     googleMap.uiSettings.isMapToolbarEnabled = true
                     googleMap.uiSettings.isZoomControlsEnabled = true
                     googleMap.uiSettings.isMyLocationButtonEnabled = true
-
+                    val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    val locationColorName = prefs.getString(KEY_LOCATION_COLOR, "blue")!!
+                    val locationColor = getColorFromName(locationColorName)
                     if (userLocationMarker == null) {
                         // Add the marker for the first time
                         userLocationMarker = googleMap.addMarker(
                             MarkerOptions()
                                 .position(userLatLng)
                                 .title("You are here")
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                                .icon(BitmapDescriptorFactory.defaultMarker(getHueFromColor(locationColor)))
                         )
                     } else {
                         // Just update the marker position instead of creating a new one
@@ -354,7 +365,10 @@ class MapFragment : Fragment() {
             markerCollection.clear()
             markerList.forEach { markerEntity ->
                 val latLng = LatLng(markerEntity.latitude, markerEntity.longitude)
-                val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title)
+                val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                val markerColorName = prefs.getString(KEY_MARKER_COLOR, "red")!!
+                val markerColor = getColorFromName(markerColorName)
+                val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title).icon(BitmapDescriptorFactory.defaultMarker(getHueFromColor(markerColor)))
                 markerCollection.addMarker(markerOptions)
             }
         })
@@ -410,13 +424,29 @@ class MapFragment : Fragment() {
     private fun drawRouteOnMap(encodedPolyline: String) {
         // Remove the existing route before drawing a new one
         currentRoute?.remove()
-
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val routeColorName = prefs.getString(KEY_ROUTE_COLOR, "blue")!!
+        val routeColor = getColorFromName(routeColorName)
         val polylineOptions = PolylineOptions()
-            .color(Color.BLUE)
+            .color(routeColor)
             .width(8f)
             .addAll(PolyUtil.decode(encodedPolyline))
 
         currentRoute = googleMap.addPolyline(polylineOptions)
+    }
+    private fun getColorFromName(name: String): Int {
+        return when (name.lowercase()) {
+            "red" -> Color.RED
+            "green" -> Color.GREEN
+            "blue" -> Color.BLUE
+            "yellow" -> Color.YELLOW
+            else -> Color.BLUE
+        }
+    }
+    private fun getHueFromColor(color: Int): Float {
+        val hsv = FloatArray(3)
+        Color.colorToHSV(color, hsv)
+        return hsv[0] // hue only
     }
 
 

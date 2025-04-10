@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.osufoottrafficapp.databinding.ActivityMainBinding
 import com.example.osufoottrafficapp.ui.fragment.MapFragment
 import com.example.osufoottrafficapp.ui.fragment.MarkersFragment
+import com.example.osufoottrafficapp.ui.fragment.SettingsFragment
 
 private const val TAG = "MainActivity"
 
@@ -22,16 +23,21 @@ class MainActivity : AppCompatActivity()/*, OnMapReadyCallback*/ {
 
         binding.mapButton.setOnClickListener(::mapButtonOnClickListener)
         binding.markersButton.setOnClickListener(::markersButtonOnClickListener)
+        binding.settingsButton.setOnClickListener(::settingsButtonOnClickListener)
+
 
         if (savedInstanceState == null) {
             val mapFragment = MapFragment()
             val markersFragment = MarkersFragment()
-
+            val settingsFragment = SettingsFragment()
             supportFragmentManager.beginTransaction()
                 .add(R.id.main_fragment_container, mapFragment, "MAP_FRAGMENT")
                 .add(R.id.main_fragment_container, markersFragment, "MARKERS_FRAGMENT")
+                .add(R.id.main_fragment_container, settingsFragment, "SETTINGS_FRAGMENT")
                 .hide(markersFragment)
+                .hide(settingsFragment)
                 .commit()
+
         }
     }
 
@@ -43,6 +49,10 @@ class MainActivity : AppCompatActivity()/*, OnMapReadyCallback*/ {
     private fun markersButtonOnClickListener(view: View) {
         val markersFragment = supportFragmentManager.findFragmentByTag("MARKERS_FRAGMENT") ?: MarkersFragment()
         showFragment(markersFragment)
+    }
+    private fun settingsButtonOnClickListener(view: View) {
+        val settingsFragment = supportFragmentManager.findFragmentByTag("SETTINGS_FRAGMENT") ?: SettingsFragment()
+        showFragment(settingsFragment)
     }
 
 

@@ -1,0 +1,60 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Color for Location"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
+
+        <RadioGroup
+            android:id="@+id/locationColorRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/radioRedLocation" android:text="Red"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioBlueLocation" android:text="Blue" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioGreenLocation" android:text="Green" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioYellowLocation" android:text="Yellow" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+        </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Color for Route"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
+
+        <RadioGroup
+            android:id="@+id/colorRadioGroupRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/radioRedRoute" android:text="Red"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioBlueRoute" android:text="Blue" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioGreenRoute" android:text="Green" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioYellowRoute" android:text="Yellow" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+        </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Color for Markers"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
+
+        <RadioGroup
+            android:id="@+id/colorRadioGroupMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/radioRed" android:text="Red"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioBlue" android:text="Blue" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioGreen" android:text="Green" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:id="@+id/radioYellow" android:text="Yellow" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+        </RadioGroup>
+    </LinearLayout>
+</ScrollView>
