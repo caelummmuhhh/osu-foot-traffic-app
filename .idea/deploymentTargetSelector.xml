@@ -8,10 +8,16 @@
       <SelectionState runConfigName="UITest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testAddMarker()">
+      <SelectionState runConfigName="testThree()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testMarkerOptionsDialog()">
+      <SelectionState runConfigName="testMap()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="testAddingMarker()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="testEditMarker()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

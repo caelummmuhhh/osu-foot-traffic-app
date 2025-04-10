@@ -165,7 +165,7 @@ class MapFragment : Fragment() {
     }
 
     //Add a marker to the map and save it to the database
-    private fun addMarker(latLng: LatLng) {
+    fun addMarker(latLng: LatLng) {
         //Create a new marker with a default title
         val markerOptions = MarkerOptions().position(latLng).title("New Marker")
 
@@ -185,7 +185,7 @@ class MapFragment : Fragment() {
     }
 
     //Display a dialog when a marker is clicked
-    private fun showMarkerOptionsDialog(marker: Marker) {
+    fun showMarkerOptionsDialog(marker: Marker) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Update Marker Name")
 
