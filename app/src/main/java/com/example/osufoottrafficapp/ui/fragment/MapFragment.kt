@@ -41,12 +41,10 @@ import com.google.maps.android.PolyUtil
 import com.google.maps.android.collections.MarkerManager
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
+import java.io.BufferedReader
 import java.io.InputStreamReader
 import android.Manifest as Manifest1
 
-
-//Idk what this import does but it causes an error.
-//import com.example.osufoottrafficapp.Manifest as Manifest2
 
 class MapFragment : Fragment() {
 
@@ -71,15 +69,16 @@ class MapFragment : Fragment() {
     private val callback = OnMapReadyCallback { map ->
         googleMap = map
         setupMap()
-        //createBuildingsLayer()
 
-        getGeoJson { geoJson ->
-            if (geoJson != null) {
-                //GeoJsonHelper.renderGeoJsonTraffic(googleMap, geoJson)
-                geoJsonObject = geoJson
-                startTrafficRenderingTimer(googleMap)
-            } else {
-                Log.e(TAG, "Failed to load geojson.")
+        trafficCrScope.launch {
+            val geoJson = downloadAndParseJson()
+            withContext(Dispatchers.Main) {
+                if (geoJson != null) {
+                    geoJsonObject = geoJson
+                    startTrafficRenderingTimer(googleMap)
+                } else {
+                    Log.e(TAG, "Failed to load geojson.")
+                }
             }
         }
     }
@@ -102,7 +101,6 @@ class MapFragment : Fragment() {
         mapFragment?.getMapAsync(callback)  // Ensures only one map initialization
 
         checkLocationPermission()
-
     }
 
     override fun onResume() {
@@ -147,29 +145,14 @@ class MapFragment : Fragment() {
                     storageHelper.getReference(FirebaseStoragePath.TRAFFIC_DATA_GEOJSON)
                 val inputStream = geoJsonRef.stream.await().stream
 
-                val reader = InputStreamReader(inputStream, Charsets.UTF_8)
-                return@withContext Gson().fromJson(
-                    reader,
-                    GeoJsonFeatureCollection::class.java
-                ) // Parse streaming
+                /* Read using buffered reader */
+                val reader = BufferedReader(InputStreamReader(inputStream, Charsets.UTF_8), 16 * 1024) // 16 KB
+                return@withContext Gson().fromJson(reader, GeoJsonFeatureCollection::class.java)
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
             }
         }
-
-    private fun getGeoJson(callback: (GeoJsonFeatureCollection?) -> Unit) {
-        storageHelper.downloadFileBytes(FirebaseStoragePath.TRAFFIC_DATA_GEOJSON)
-            .addOnSuccessListener { byteArray ->
-                val geoJson =
-                    Gson().fromJson(String(byteArray), GeoJsonFeatureCollection::class.java)
-                callback(geoJson)
-            }
-            .addOnFailureListener { err ->
-                err.printStackTrace()
-                callback(null)
-            }
-    }
 
     //Add a marker to the map and save it to the database
     fun addMarker(latLng: LatLng) {
@@ -237,9 +220,6 @@ class MapFragment : Fragment() {
             }
         }
     }
-
-
-
 
     private fun deleteMarker(marker: Marker) {
         // Find and delete the marker from the database
@@ -448,6 +428,4 @@ class MapFragment : Fragment() {
         Color.colorToHSV(color, hsv)
         return hsv[0] // hue only
     }
-
-
 }
