@@ -21,10 +21,10 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.osufoottrafficapp.R
-import com.example.osufoottrafficapp.data.FirebaseStorageHelper
-import com.example.osufoottrafficapp.data.FirebaseStoragePath
 import com.example.osufoottrafficapp.helpers.GeoJsonHelper
 import com.example.osufoottrafficapp.model.GeoJsonFeatureCollection
+import com.example.osufoottrafficapp.ui.viewmodel.MarkerViewModel
+import com.example.osufoottrafficapp.ui.viewmodel.TrafficViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -36,30 +36,18 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
-import com.google.gson.Gson
 import com.google.maps.android.PolyUtil
 import com.google.maps.android.collections.MarkerManager
 import kotlinx.coroutines.*
-import kotlinx.coroutines.tasks.await
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import android.Manifest as Manifest1
 
 
 class MapFragment : Fragment() {
-
-    private val TAG = "MapFragment"
-    private val PREFS_NAME = "MapColorPrefs"
-    private val KEY_LOCATION_COLOR = "location_color"
-    private val KEY_ROUTE_COLOR = "route_color"
-    private val KEY_MARKER_COLOR = "marker_color"
     private lateinit var markerViewModel: MarkerViewModel
+    private lateinit var trafficViewModel: TrafficViewModel
     private lateinit var googleMap: GoogleMap
     private lateinit var markerManager: MarkerManager
     private lateinit var markerCollection: MarkerManager.Collection
-    private lateinit var geoJsonObject: GeoJsonFeatureCollection
-    private var storageHelper: FirebaseStorageHelper = FirebaseStorageHelper()
-    private val LOCATION_PERMISSION_REQUEST_CODE = 1001
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var currentRoute: com.google.android.gms.maps.model.Polyline? = null
     private var userLocationMarker: Marker? = null
@@ -71,16 +59,12 @@ class MapFragment : Fragment() {
         setupMap()
 
         trafficCrScope.launch {
-            val geoJson = downloadAndParseJson()
             withContext(Dispatchers.Main) {
-                if (geoJson != null) {
-                    geoJsonObject = geoJson
-                    startTrafficRenderingTimer(googleMap)
-                } else {
-                    Log.e(TAG, "Failed to load geojson.")
-                }
+                val geoJson = trafficViewModel.getTrafficModel()
+                startTrafficRenderingTimer(googleMap, geoJson)
             }
         }
+
     }
 
     override fun onCreateView(
@@ -100,28 +84,38 @@ class MapFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
         mapFragment?.getMapAsync(callback)  // Ensures only one map initialization
 
+        trafficViewModel = ViewModelProvider(this)[TrafficViewModel::class.java]
+
         checkLocationPermission()
     }
 
     override fun onResume() {
         super.onResume()
-
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback) // Ensure the map reloads when coming back
         // Fetch and update user location
         if (::googleMap.isInitialized) {
             getCurrentLocation()
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        stopTrafficRenderingTimer()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        stopTrafficRenderingTimer()
         if (::googleMap.isInitialized) {
             googleMap.clear()
         }
     }
 
-    private fun startTrafficRenderingTimer(googleMap: GoogleMap) {
+    private fun stopTrafficRenderingTimer() {
+        trafficJob?.cancel()
+        trafficJob = null
+    }
+
+    private fun startTrafficRenderingTimer(googleMap: GoogleMap, trafficGeoJson: GeoJsonFeatureCollection) {
         if (trafficJob?.isActive == true) {
             Log.w(TAG, "Traffic rendering timer is already running, skipping reinitialization.")
             return
@@ -130,29 +124,13 @@ class MapFragment : Fragment() {
         trafficJob = trafficCrScope.launch(Dispatchers.Default) { // Background thread
             while (isActive) { // Loop until coroutine is cancelled
                 withContext(Dispatchers.Main) { // Switch to main thread for UI update
-                    GeoJsonHelper.renderGeoJsonTraffic(googleMap, geoJsonObject)
+                    GeoJsonHelper.renderGeoJsonTraffic(googleMap, trafficGeoJson)
                 }
                 Log.e(TAG, "Ran rendering!")
                 delay(2 * 60 * 1000L) // Wait 5 minutes
             }
         }
     }
-
-    private suspend fun downloadAndParseJson(): GeoJsonFeatureCollection? =
-        withContext(Dispatchers.IO) {  // Run on background thread
-            try {
-                val geoJsonRef =
-                    storageHelper.getReference(FirebaseStoragePath.TRAFFIC_DATA_GEOJSON)
-                val inputStream = geoJsonRef.stream.await().stream
-
-                /* Read using buffered reader */
-                val reader = BufferedReader(InputStreamReader(inputStream, Charsets.UTF_8), 16 * 1024) // 16 KB
-                return@withContext Gson().fromJson(reader, GeoJsonFeatureCollection::class.java)
-            } catch (e: Exception) {
-                e.printStackTrace()
-                null
-            }
-        }
 
     //Add a marker to the map and save it to the database
     fun addMarker(latLng: LatLng) {
@@ -176,7 +154,6 @@ class MapFragment : Fragment() {
             markerViewModel.insertMarker(markerEntity)
         }
     }
-
 
     //Display a dialog when a marker is clicked
     fun showMarkerOptionsDialog(marker: Marker) {
@@ -208,7 +185,10 @@ class MapFragment : Fragment() {
     //Called if update button is pressed
     private fun updateMarker(marker: Marker, newTitle: String) {
         // Retrieve the existing marker entity from the ViewModel
-        markerViewModel.getMarkerByLocation(marker.position.latitude, marker.position.longitude) { existingMarker ->
+        markerViewModel.getMarkerByLocation(
+            marker.position.latitude,
+            marker.position.longitude
+        ) { existingMarker ->
             if (existingMarker != null) {
                 // If marker exists, update its title and update it in the database
                 val updatedMarker = existingMarker.copy(title = newTitle)
@@ -216,14 +196,19 @@ class MapFragment : Fragment() {
 
                 // Remove the old marker and add the updated one to the map
                 markerCollection.remove(marker)
-                markerCollection.addMarker(MarkerOptions().position(marker.position).title(newTitle))
+                markerCollection.addMarker(
+                    MarkerOptions().position(marker.position).title(newTitle)
+                )
             }
         }
     }
 
     private fun deleteMarker(marker: Marker) {
         // Find and delete the marker from the database
-        markerViewModel.getMarkerByLocation(marker.position.latitude, marker.position.longitude) { existingMarker ->
+        markerViewModel.getMarkerByLocation(
+            marker.position.latitude,
+            marker.position.longitude
+        ) { existingMarker ->
             existingMarker?.let {
                 markerViewModel.deleteMarker(it) // Remove from Room database
             }
@@ -236,7 +221,6 @@ class MapFragment : Fragment() {
         currentRoute?.remove()
         currentRoute = null
     }
-
 
     //Check for location permissions
     private fun checkLocationPermission() {
@@ -290,7 +274,8 @@ class MapFragment : Fragment() {
                     googleMap.uiSettings.isMapToolbarEnabled = true
                     googleMap.uiSettings.isZoomControlsEnabled = true
                     googleMap.uiSettings.isMyLocationButtonEnabled = true
-                    val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    val prefs =
+                        requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
                     val locationColorName = prefs.getString(KEY_LOCATION_COLOR, "blue")!!
                     val locationColor = getColorFromName(locationColorName)
                     if (userLocationMarker == null) {
@@ -299,7 +284,13 @@ class MapFragment : Fragment() {
                             MarkerOptions()
                                 .position(userLatLng)
                                 .title("You are here")
-                                .icon(BitmapDescriptorFactory.defaultMarker(getHueFromColor(locationColor)))
+                                .icon(
+                                    BitmapDescriptorFactory.defaultMarker(
+                                        getHueFromColor(
+                                            locationColor
+                                        )
+                                    )
+                                )
                         )
                     } else {
                         // Just update the marker position instead of creating a new one
@@ -348,7 +339,8 @@ class MapFragment : Fragment() {
                 val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
                 val markerColorName = prefs.getString(KEY_MARKER_COLOR, "red")!!
                 val markerColor = getColorFromName(markerColorName)
-                val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title).icon(BitmapDescriptorFactory.defaultMarker(getHueFromColor(markerColor)))
+                val markerOptions = MarkerOptions().position(latLng).title(markerEntity.title)
+                    .icon(BitmapDescriptorFactory.defaultMarker(getHueFromColor(markerColor)))
                 markerCollection.addMarker(markerOptions)
             }
         })
@@ -414,6 +406,7 @@ class MapFragment : Fragment() {
 
         currentRoute = googleMap.addPolyline(polylineOptions)
     }
+
     private fun getColorFromName(name: String): Int {
         return when (name.lowercase()) {
             "red" -> Color.RED
@@ -423,9 +416,19 @@ class MapFragment : Fragment() {
             else -> Color.BLUE
         }
     }
+
     private fun getHueFromColor(color: Int): Float {
         val hsv = FloatArray(3)
         Color.colorToHSV(color, hsv)
         return hsv[0] // hue only
+    }
+
+    companion object {
+        const val TAG = "MapFragment"
+        const val PREFS_NAME = "MapColorPrefs"
+        const val KEY_LOCATION_COLOR = "location_color"
+        const val KEY_ROUTE_COLOR = "route_color"
+        const val KEY_MARKER_COLOR = "marker_color"
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1001
     }
 }
