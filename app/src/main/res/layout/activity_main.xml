@@ -9,34 +9,56 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="642dp"
-            android:layout_above="@+id/map_button"
-            android:layout_marginBottom="30dp" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_button_bar" />
 
-        <Button
-            android:id="@+id/map_button"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
+        <!-- Bottom bar container -->
+        <LinearLayout
+            android:id="@+id/bottom_button_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
-            android:text="@string/map_button_name" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginBottom="16dp"
+            android:weightSum="3">
 
-        <Button
-            android:id="@+id/markers_button"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
-            android:text="@string/markers_button_name" />
+                <ImageButton
+                    android:id="@+id/map_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/map_fill"
+                    map:tint="@color/dark_gray_60"                    android:scaleType="fitCenter"
+                    android:padding="5dp"
+                    android:contentDescription="@string/map_view_desc" />
 
-        <Button
-        android:id="@+id/settings_button"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="10dp"
-        android:text="Settings" />
+                <ImageButton
+                    android:id="@+id/markers_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/geo_alt_fill"
+                    map:tint="@color/dark_gray_60"
+                    android:scaleType="fitCenter"
+                    android:padding="5dp"
+                    android:contentDescription="@string/markers_list_view_desc" />
+
+                <ImageButton
+                    android:id="@+id/settings_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/gear_fill"
+                    map:tint="@color/dark_gray_60"
+                    android:scaleType="fitCenter"
+                    android:padding="5dp"
+                    android:contentDescription="@string/settings_view_desc" />
+
+        </LinearLayout>
 
 </RelativeLayout>

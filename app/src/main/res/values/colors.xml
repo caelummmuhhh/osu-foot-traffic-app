@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- OSU Colors -->
+    <color name="main_scarlet">#ba0c2f</color>
+    <color name="scarlet_dark_40">#70071c</color>
+    <color name="scarlet_dark_60">#4a0513</color>
+    <color name="main_gray">#a7b1b7</color>
+    <color name="gray_light_20">#bfc6cb</color>
+    <color name="gray_light_40">#cfd4d8</color>
+    <color name="gray_light_60">#dfe3e5</color>
+    <color name="gray_light_80">#eff1f2</color>
+    <color name="gray_light_90">#f6f7f8</color>
+    <color name="dark_gray_20">#868e92</color>
+    <color name="dark_gray_40">#646a6e</color>
+    <color name="dark_gray_60">#3f4443</color>
+    <color name="dark_gray_80">#212325</color>
+
 </resources>
