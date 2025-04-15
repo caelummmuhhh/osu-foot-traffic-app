@@ -13,4 +13,6 @@
     <string name="map_view_desc">Map View</string>
     <string name="markers_list_view_desc">Markers List</string>
     <string name="settings_view_desc">Settings</string>
+    <string name="app_icon_desc">Person Walking App Icon</string>
+    <string name="app_title">OSU Foot Traffic</string>
 </resources>

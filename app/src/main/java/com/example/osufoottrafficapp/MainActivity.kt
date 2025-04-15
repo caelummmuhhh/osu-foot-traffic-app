@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.osufoottrafficapp.databinding.ActivityMainBinding
@@ -18,14 +19,12 @@ class MainActivity : AppCompatActivity()/*, OnMapReadyCallback*/ {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate(Bundle?) called")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.mapButton.setOnClickListener(::mapButtonOnClickListener)
         binding.markersButton.setOnClickListener(::markersButtonOnClickListener)
         binding.settingsButton.setOnClickListener(::settingsButtonOnClickListener)
-
 
         if (savedInstanceState == null) {
             val mapFragment = MapFragment()
