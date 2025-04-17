@@ -1,7 +1,6 @@
 package com.example.osufoottrafficapp.ui.fragment
 
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.flow.Flow
 
 class MarkerRepository(private val markerDao: MarkerDao) {
     val allMarkers: LiveData<List<MarkerEntity>> = markerDao.getAllMarkers()

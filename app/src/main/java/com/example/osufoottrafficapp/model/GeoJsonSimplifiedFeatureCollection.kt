@@ -1,7 +1,5 @@
 package com.example.osufoottrafficapp.model
 
-import java.time.LocalDateTime
-
 class GeoJsonSimplifiedFeatureCollection(
     val type: String,
     val name: String,

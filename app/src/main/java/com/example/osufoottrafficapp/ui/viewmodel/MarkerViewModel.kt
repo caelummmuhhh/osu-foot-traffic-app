@@ -1,10 +1,12 @@
-package com.example.osufoottrafficapp.ui.fragment
+package com.example.osufoottrafficapp.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.maps.model.Marker
+import com.example.osufoottrafficapp.ui.fragment.MarkerDatabase
+import com.example.osufoottrafficapp.ui.fragment.MarkerEntity
+import com.example.osufoottrafficapp.ui.fragment.MarkerRepository
 import kotlinx.coroutines.launch
 
 class MarkerViewModel(application: Application) : AndroidViewModel(application) {
@@ -17,7 +19,11 @@ class MarkerViewModel(application: Application) : AndroidViewModel(application) 
         allMarkers = repository.allMarkers
     }
 
-    fun getMarkerByLocation(latitude: Double, longitude: Double, callback: (MarkerEntity?) -> Unit) {
+    fun getMarkerByLocation(
+        latitude: Double,
+        longitude: Double,
+        callback: (MarkerEntity?) -> Unit
+    ) {
         viewModelScope.launch {
             val marker = repository.getMarkerByLocation(latitude, longitude)
             callback(marker)
@@ -31,9 +37,8 @@ class MarkerViewModel(application: Application) : AndroidViewModel(application) 
     }
 
 
-
     fun insertMarker(marker: MarkerEntity) = viewModelScope.launch {
-            repository.insertMarker(marker)
+        repository.insertMarker(marker)
     }
 
     fun deleteMarker(marker: MarkerEntity) = viewModelScope.launch {
@@ -41,8 +46,8 @@ class MarkerViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // Method to delete all markers
-    fun deleteAllMarkers() = viewModelScope.launch{
-            repository.deleteAllMarkers()
+    fun deleteAllMarkers() = viewModelScope.launch {
+        repository.deleteAllMarkers()
     }
 }
 

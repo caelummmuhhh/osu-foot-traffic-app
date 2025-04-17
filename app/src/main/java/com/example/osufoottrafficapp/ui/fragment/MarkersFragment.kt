@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.osufoottrafficapp.R
 import com.example.osufoottrafficapp.ui.adapter.MarkerAdapter
-import com.example.osufoottrafficapp.ui.fragment.MarkerViewModel
+import com.example.osufoottrafficapp.ui.viewmodel.MarkerViewModel
 
 class MarkersFragment : Fragment() {
 
